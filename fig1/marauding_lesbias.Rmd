@@ -1,0 +1,365 @@
+---
+title: "Marauding Lesbia Plots"
+author: "Boris Igić and Phil Fenberg"
+date: '`r Sys.Date()`'
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r data-lib-import}
+library(ggplot2)
+library(RColorBrewer) # for brewer.pal() color palette
+library(cowplot) # for plot_grid()
+
+
+bandits<-read.csv(file = "/Users/boris/Dropbox/PROJECTS/nectar-robbing/larceny-paper/entered_data/robber_dbase_v1.1-lesbia.csv", header=T, as.is=T)
+
+#should repeat this (below) on: 
+#(1) original csv data, instead of magic numbers
+#(2) separated by Lesbia species
+
+split.bandits <- split(bandits,bandits$bird.genus)
+lesbias <- split.bandits$Lesbia
+diglossas <- split.bandits$Diglossa
+```
+
+### Summary Stats
+
+We take a look at some summary statistics, mostly by checking tables of the mode of plant-trainbearer interaction, semi-manually extract and re-order levels/factors for that data to later make a bar plot. We also check that there are no unexpected associations with sex (m/f) and species (nuna/victoriae, ignoring uncertain sp. designation).
+
+```{r lesbia-data-look-1}
+# How many L. nuna, L. victoriae, and "sp."
+dim(lesbias)
+
+table(lesbias$bird.species)
+
+# sex: roughly similar number of males and females
+sum(table(lesbias$bird.sex))
+table(lesbias$bird.sex)
+
+# visitor mode
+sum(table(lesbias$visitor.mode))
+sum(is.na(lesbias$visitor.mode))
+table(lesbias$visitor.mode)
+
+
+lesbia.tally <- data.frame(modes=as.factor(c("R2","R1/R2","T","T/P","P","UNK")),
+           obs=c(sum(lesbias$visitor.mode=="NR2",na.rm = T),
+          sum(lesbias$visitor.mode=="NR",na.rm = T),
+          sum(lesbias$visitor.mode=="T",na.rm = T),
+          sum(lesbias$visitor.mode=="P/T",na.rm = T),
+          sum(lesbias$visitor.mode=="P",na.rm = T),
+          sum(is.na(lesbias$visitor.mode)))
+          )
+# This is the total tally for all Lesbias:
+lesbia.tally
+
+
+# Set factors into desired plotting order
+lesbia.tally$modes <- factor(lesbia.tally$modes, levels = c("R2","R1/R2","T","T/P","P","UNK"))
+
+# convert observations into percentages
+lesbia.tally$perc <- (lesbia.tally$obs/sum(lesbia.tally$obs))*100
+
+
+# plant genera visited (and IDed)
+sum(table(lesbias$plant.genus))
+table(lesbias$plant.genus)
+
+```
+
+
+### Sex and Species
+
+Now, let's check whether there are sex- or species-dependent associations. We don't expect any, a priori. To facilitate this, we're splitting the visits into two broad catergories: larceny (NR1,NR2,T, and any combinations thereof) and pollination (P,P/T). 
+
+Why is P/T listed as a pollination? because we cannot rule it out as a pollination and that classification is conservative with respect to our main argument---there is a *lot* of larceny going on, about 50% of all visits.
+
+```{r lesbia-splits}
+#
+#Check whether there are sex-dependent differences
+#
+
+les.sex.not.na<-complete.cases(lesbias[,c(which(names(lesbias)=="bird.sex"),which(names(lesbias)=="visitor.mode"))])
+
+sex_mode <- lesbias[,c(which(names(lesbias)=="bird.sex"),which(names(lesbias)=="visitor.mode"))][les.sex.not.na,]
+table(split(sex_mode,sex_mode$bird.sex)$m)
+table(split(sex_mode,sex_mode$bird.sex)$f)
+
+f.larceny<-table(split(sex_mode,sex_mode$bird.sex)$f)[1]+table(split(sex_mode,sex_mode$bird.sex)$f)[2]+table(split(sex_mode,sex_mode$bird.sex)$f)[5]
+
+f.pollination <- table(split(sex_mode,sex_mode$bird.sex)$f)[3]+table(split(sex_mode,sex_mode$bird.sex)$f)[4]
+  
+m.larceny<-table(split(sex_mode,sex_mode$bird.sex)$m)[1]+table(split(sex_mode,sex_mode$bird.sex)$m)[2]
+
+m.pollination <- table(split(sex_mode,sex_mode$bird.sex)$m)[3]+table(split(sex_mode,sex_mode$bird.sex)$m)[4]
+
+  
+les.by.sex <-
+matrix(c(m.larceny, f.larceny, m.pollination, f.pollination), #these were manually added from above lines
+       nrow = 2,
+       dimnames =
+       list(c("male", "female"),
+            c("larceny", "pollination")))
+
+les.by.sex
+
+fisher.test(les.by.sex)
+
+#
+#Check whether there are spp-dependent differences
+#
+
+les.sp.not.na<-complete.cases(lesbias[,c(which(names(lesbias)=="bird.species"),which(names(lesbias)=="visitor.mode"))])
+sp_mode <- lesbias[,c(1:16)][les.sp.not.na,]
+nun <- split(sp_mode,sp_mode$bird.species)$nuna
+vic <- split(sp_mode,sp_mode$bird.species)$victoriae
+table(nun$visitor.mode)
+table(vic$visitor.mode)
+
+n.larceny<-table(nun$visitor.mode)[1]+table(nun$visitor.mode)[2]
+
+n.pollination <- table(nun$visitor.mode)[3]+table(nun$visitor.mode)[4]
+                       
+v.larceny<-table(vic$visitor.mode)[1]+table(vic$visitor.mode)[2]+table(vic$visitor.mode)[5]
+
+v.pollination <- table(vic$visitor.mode)[3]+table(vic$visitor.mode)[4]
+  
+les.by.sp <-
+matrix(c(n.larceny, v.larceny, n.pollination, v.pollination), #these were manually added from above lines
+       nrow = 2,
+       dimnames =
+       list(c("nuna", "victoriae"),
+            c("larceny", "pollination")))
+
+les.by.sp
+
+fisher.test(les.by.sp)
+```
+
+This sets up plots by species, but it is specifically omitting NA/UNK entries, because it is using the values of nun and vic as calculated for the Fisher Tests (which omit them).
+
+```{r by-species-plotting-setup}
+#
+#L. nuna
+#
+nun.tally <- data.frame(modes=as.factor(c("R2","R1/R2","T","T/P","P","UNK")),
+           obs=c(sum(nun$visitor.mode=="NR2",na.rm = T),
+          sum(nun$visitor.mode=="NR",na.rm = T),
+          sum(nun$visitor.mode=="T",na.rm = T),
+          sum(nun$visitor.mode=="P/T",na.rm = T),
+          sum(nun$visitor.mode=="P",na.rm = T),
+          sum(is.na(nun$visitor.mode)))
+          )
+# This is the total tally for all Lesbias:
+nun.tally
+
+
+# Set factors into desired plotting order
+nun.tally$modes <- factor(nun.tally$modes, levels = c("R2","R1/R2","T","T/P","P","UNK"))
+
+# convert observations into percentages
+nun.tally$perc <- (nun.tally$obs/sum(nun.tally$obs))*100
+
+#
+# L. victoriae
+#
+
+vic.tally <- data.frame(modes=as.factor(c("R2","R1/R2","T","T/P","P","UNK")),
+           obs=c(sum(vic$visitor.mode=="NR2",na.rm = T),
+          sum(vic$visitor.mode=="NR",na.rm = T),
+          sum(vic$visitor.mode=="T",na.rm = T),
+          sum(vic$visitor.mode=="P/T",na.rm = T),
+          sum(vic$visitor.mode=="P",na.rm = T),
+          sum(is.na(vic$visitor.mode)))
+          )
+# This is the total tally for all Lesbias:
+vic.tally
+
+
+# Set factors into desired plotting order
+vic.tally$modes <- factor(vic.tally$modes, levels = c("R2","R1/R2","T","T/P","P","UNK"))
+
+# convert observations into percentages
+vic.tally$perc <- (vic.tally$obs/sum(vic.tally$obs))*100
+
+```
+
+Here is the first plotting attempt with red:blue:white scheme, red:yellow:green scheme and varying observation counts/percentages along with y-axis flip. 
+
+```{r lesbia-data-plot, fig.height = 10, fig.width = 5}
+
+# Colors for plotting
+# this is a good red, #f03b20, ("#FEEACCFF") but the result with white is very porky flesh. Looks like bacon
+# '#e6550d' with '#FEEDDDFF' looks pretty good, because it's orangey
+# red to blue? #f03b20 to #a6bddb
+# scale_fill_manual(values=brewer.pal(n=6, name='RdYlGn')) <-- this is great, but
+# it needs a sixth white/off-white color added for "Interaction cannot be determined"
+
+##f03b20, ("#FEEACCFF"
+lesbia.col <- colorRampPalette(c('#f03b20','cornflowerblue')) # reddish to blueish
+lesbia.cols <- alpha(lesbia.col(5))
+RBW6 <- c(lesbia.cols,'#EAEFEDFF')
+
+# First plotting attempt with red:blue:white and observation counts, not percentages
+l1 <- ggplot(lesbia.tally, aes(1, obs, fill=modes)) + 
+  geom_bar(data=lesbia.tally,stat="identity") +
+  scale_fill_manual(values=RBW6) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), 
+        axis.title.y=element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.background = element_blank())
+
+# Second plotting attempt with red:green:white and percentages, not observation counts
+#scale_fill_manual(values=brewer.pal(n=6, name='RdYlGn'))
+
+RGW6 <- brewer.pal(n=6, name='RdYlGn')
+RGW6[6] <- '#FAEFEFAF'
+l2 <- ggplot(lesbia.tally, aes(1, perc, fill=modes)) + 
+  geom_bar(data=lesbia.tally,stat="identity") +
+  scale_fill_manual(values=RGW6) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), 
+        axis.title.y=element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.background = element_blank()) 
+  # + scale_y_reverse()
+
+plot_grid(l1, l2, ncol=2, align="v")
+
+# plot to file with pdf()
+pdf(file="lesbia-fig1.pdf", height=10, width=5)
+plot_grid(l1, l2, ncol=2, align="v")
+dev.off()
+
+#
+# By Species Plots
+#
+
+# First plotting attempt with red:blue:white and observation counts, not percentages
+v1 <- ggplot(vic.tally, aes(1, obs, fill=modes)) + 
+  geom_bar(data=vic.tally,stat="identity") +
+  scale_fill_manual(values=RBW6) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), 
+        axis.title.y=element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.background = element_blank())
+
+# Second plotting attempt with red:green:white and percentages, not observation counts
+#scale_fill_manual(values=brewer.pal(n=6, name='RdYlGn'))
+
+RGW6 <- brewer.pal(n=6, name='RdYlGn')
+RGW6[6] <- '#FAEFEFAF'
+v2 <- ggplot(vic.tally, aes(1, perc, fill=modes)) + 
+  geom_bar(data=vic.tally,stat="identity") +
+  scale_fill_manual(values=RGW6) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), 
+        axis.title.y=element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.background = element_blank())
+  # + scale_y_reverse()
+
+plot_grid(v1, v2, ncol=2, align="v")
+
+# First plotting attempt with red:blue:white and observation counts, not percentages
+n1 <- ggplot(nun.tally, aes(1, obs, fill=modes)) + 
+  geom_bar(data=nun.tally,stat="identity") +
+  scale_fill_manual(values=RBW6) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), 
+        axis.title.y=element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.background = element_blank())
+
+# Second plotting attempt with red:green:white and percentages, not observation counts
+#scale_fill_manual(values=brewer.pal(n=6, name='RdYlGn'))
+
+RGW6 <- brewer.pal(n=6, name='RdYlGn')
+RGW6[6] <- '#FAEFEFAF'
+n2 <- ggplot(nun.tally, aes(1, perc, fill=modes)) + 
+  geom_bar(data=nun.tally,stat="identity") +
+  scale_fill_manual(values=RGW6) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), 
+        axis.title.y=element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.background = element_blank()) 
+  # + scale_y_reverse()
+
+plot_grid(n1, n2, ncol=2, align="v")
+```
+
+### Geographic Distribution
+
+```{r map-plot}
+library(dismo)
+library(maptools)
+data(wrld_simpl)
+plot(wrld_simpl, xlim=c(-85,-55), ylim=c(-15,15), axes=TRUE, col="grey")
+# plot points
+points(jitter(lesbias$lon[complete.cases(lesbias$lon)],amount = 0.5), jitter(lesbias$lat[complete.cases(lesbias$lat)],amount = 0.5), col=c("red", "green3", "blue")[unclass(factor(lesbias$bird.species[complete.cases(lesbias$lon)]))], pch=20, cex=1.25)
+#points(nun$lon[complete.cases(nun$lon)], nun$lat[complete.cases(nun$lat)], col='red', pch=20, cex=1.25)
+#points(jitter(lesbias$lon[complete.cases(lesbias$lon)],amount = 0.5), jitter(lesbias$lat[complete.cases(lesbias$lat)], amount = 0.5), col='orange', pch=20, cex=1.25)
+#points(jitter(nun$lon[complete.cases(nun$lon)],amount = 0.5), jitter(nun$lat[complete.cases(nun$lat)], amount = 0.5), col='red', pch=20, cex=1.25)
+```
+
+
+
+
+
+
+
+
+
+This is a color test that can be ignored, but is useful for selecting good plotting colors above.
+
+```{r color-test, fig.height = 6, fig.width = 7}
+# brewer.pal
+RGW6 <- brewer.pal(n=12, name='RdYlGn')
+
+par(mfrow=c(3,1))
+plot(1:12,rep(1,12),pch=20,cex=10,col=RGW6)
+plot(1:6,rep(1,6),pch=20,cex=10,col=RGW6[c(TRUE, FALSE)])
+plot(1:6,rep(1,6),pch=20,cex=10,col=RGW6[c(F,T)])
+
+# rcolorbrewer
+lesbia.cols <- alpha(lesbia.col(11))
+RBW6 <- c(lesbia.cols,'#EAEFEDFF')
+par(mfrow=c(3,1))
+plot(1:12,rep(1,12),pch=20,cex=10,col=RBW6)
+plot(1:6,rep(1,6),pch=20,cex=10,col=RBW6[c(TRUE, FALSE)])
+plot(1:6,rep(1,6),pch=20,cex=10,col=RBW6[c(F,T)])
+
+# manual palette
+#Color picker samples from Brugmansia image:
+#reds (bottom): #F5485B, #DC4465, #B92C25
+#yellows: (middle): #E6BD09, #D9B509, #D2B60A
+#greens (top & bird): #6F7B16,#859B44,#60642A
+manual.col <- c('#F5485B', '#DC4465', '#B92C25','#E6BD09', '#D9B509', '#D2B60A','#6F7B16','#859B44','#60642A')
+manual.cols <- alpha(manual.col)
+RYG6 <- c(manual.cols,'#EAEFEDFF')
+par(mfrow=c(3,1))
+plot(1:10,rep(1,10),pch=20,cex=10,col=RYG6)
+plot(1:5,rep(1,5),pch=20,cex=10,col=RYG6[c(TRUE, FALSE)])
+plot(1:5,rep(1,5),pch=20,cex=10,col=RYG6[c(F,T)])
+```

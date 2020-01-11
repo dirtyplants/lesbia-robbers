@@ -1,0 +1,100 @@
+\ProvidesPackage{evolution}     % must match the name of this file
+
+%--------------------------------------------------
+% Style for Evolution
+%--------------------------------------------------
+
+% Margins
+\usepackage[margin=1in]{geometry}
+
+% Font
+\usepackage{mathptmx} % Times font (including math)
+\usepackage[T1]{fontenc}
+% (font size is set with documentclass)
+
+% Section headings
+\setcounter{secnumdepth}{0} % do not number sections
+\usepackage[compact]{titlesec}
+\titleformat*{\section}{\center\bfseries}      % also, use titlecase
+\titleformat*{\subsection}{\bfseries\itshape}  % also, use sentencecase
+\titleformat*{\subsubsection}{\itshape}
+
+% Line spacing
+\usepackage{setspace}
+\newcommand{\stretchby}{1.5}
+\setstretch{\stretchby}
+
+% Line numbering
+%   put after amsmath, for better numbering
+%   ? though still need to wrap subequations in begin/end{linenomath*}
+\usepackage[mathlines]{lineno}
+\modulolinenumbers[5]
+% \linenumbers % put this after the titlepage
+
+% Paragraphs
+\setlength{\parindent}{0.5in}
+\setlength{\parskip}{0pt}
+
+% Figures and Tables
+
+\usepackage{graphicx}
+
+\usepackage{booktabs}
+\setlength\heavyrulewidth{0.15em}
+\cmidrulekern 0.2em
+
+\usepackage{newfloat}
+\DeclareFloatingEnvironment[name=Figure]{suppfigure}
+\DeclareFloatingEnvironment[name=Table]{supptable}
+\renewcommand\thesuppfigure{S\arabic{suppfigure}}
+\renewcommand\thesupptable{S\arabic{supptable}}
+
+\usepackage{caption}
+\captionsetup{font={stretch=\stretchby}}
+% \usepackage{subcaption}
+% push figures to end
+\usepackage[nolists,nomarkers]{endfloat}
+% \renewcommand{\efloatseparator}{\mbox{}} % don't clearpage after each float
+\DeclareDelayedFloat{suppfigure}{Supplemental Figures}
+\DeclareDelayedFloat{supptable}{Supplemental Tables}
+
+% \usepackage{sidecap}
+% \usepackage{array}
+% \usepackage{threeparttable}
+
+% Math
+\usepackage{bm}
+\newcommand{\myvec}[1]{\ensuremath{\bm{\mathsf{#1}}}}
+\usepackage{amsmath}
+
+% Citations
+\usepackage[authoryear,sectionbib]{natbib}
+\bibpunct{(}{)}{;}{a}{}{,}  % no comma between author and year
+\renewcommand{\bibsection}{\section{Literature Cited}}
+\setlength{\bibsep}{1pt}
+
+% Cross-refs
+\usepackage[hidelinks]{hyperref} % needs to be loaded before cleveref
+\usepackage[capitalize,sort&compress]{cleveref}
+\newcommand{\crefrangeconjunction}{--}
+\crefname{figure}{Fig.}{Figs.}
+\crefname{table}{Table}{Tables}
+\crefname{suppfigure}{Fig.}{Figs.}
+\crefname{supptable}{Table}{Tables}
+
+% Used on the title page
+\usepackage{endnotes}
+\renewcommand{\enoteheading}{}
+\renewcommand{\enotesize}{\normalsize}
+\renewcommand\enoteformat{\rightskip=0pt \leftskip=0pt \parindent=0em \leavevmode\makeenmark\raggedright}
+
+% Formatting of i.e. and e.g. (following space, possible comma, possible italics)
+\usepackage{xspace}
+\newcommand*{\ie}{i.e.,\xspace}
+\newcommand*{\eg}{e.g.,\xspace}
+\newcommand*{\vs}{vs.\xspace}
+
+% not sure how much this really helps
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\widowpenalty=1000 % avoid orphan lines?
+\clubpenalty=1000
