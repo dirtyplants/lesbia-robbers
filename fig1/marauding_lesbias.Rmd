@@ -4,6 +4,7 @@ author: "Boris Igić and Phil Fenberg"
 date: '`r Sys.Date()`'
 output:
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -17,7 +18,8 @@ library(RColorBrewer) # for brewer.pal() color palette
 library(cowplot) # for plot_grid()
 
 
-bandits<-read.csv(file = "/Users/boris/Dropbox/PROJECTS/nectar-robbing/larceny-paper/entered_data/robber_dbase_v1.1-lesbia.csv", header=T, as.is=T)
+#bandits<-read.csv(file = "/Users/boris/Dropbox/PROJECTS/nectar-robbing/larceny-paper/entered_data/robber_dbase_v1.1-lesbia.csv", header=T, as.is=T)
+bandits<-read.csv(file = "/Users/boris/Dropbox/PROJECTS/nectar-robbing/larceny-paper/entered_data/robber_dbase_v1.1b-lesbia.csv", header=T, as.is=T)
 
 #should repeat this (below) on: 
 #(1) original csv data, instead of magic numbers
@@ -45,9 +47,25 @@ table(lesbias$bird.sex)
 # visitor mode
 sum(table(lesbias$visitor.mode))
 sum(is.na(lesbias$visitor.mode))
+
+# Raw numbers
 table(lesbias$visitor.mode)
 
+# Proportions
+round(table(lesbias$visitor.mode)/sum(table(lesbias$visitor.mode)),digits=3)
 
+
+# plant genera visited (and IDed)
+sum(table(lesbias$plant.genus))
+table(lesbias$plant.genus)[order(table(lesbias$plant.genus))]
+
+```
+
+Let's set up the catergories to be plotted. Two plots: one will include unknown modes and one will exclude them.
+
+```{r plotting-setup-1}
+
+# TOTAL RAW DATA
 lesbia.tally <- data.frame(modes=as.factor(c("R2","R1/R2","T","T/P","P","UNK")),
            obs=c(sum(lesbias$visitor.mode=="NR2",na.rm = T),
           sum(lesbias$visitor.mode=="NR",na.rm = T),
@@ -59,17 +77,38 @@ lesbia.tally <- data.frame(modes=as.factor(c("R2","R1/R2","T","T/P","P","UNK")),
 # This is the total tally for all Lesbias:
 lesbia.tally
 
-
 # Set factors into desired plotting order
 lesbia.tally$modes <- factor(lesbia.tally$modes, levels = c("R2","R1/R2","T","T/P","P","UNK"))
 
 # convert observations into percentages
 lesbia.tally$perc <- (lesbia.tally$obs/sum(lesbia.tally$obs))*100
+les.tally.perc<-lesbia.tally$perc
+names(les.tally.perc)<-lesbia.tally$modes
+round(les.tally.perc,2)
+```
 
+```{r plotting-setup-2}
 
-# plant genera visited (and IDed)
-sum(table(lesbias$plant.genus))
-table(lesbias$plant.genus)
+# TOTAL RAW DATA
+lesbia.noNA <- data.frame(modes=as.factor(c("R2","R1/R2","T","T/P","P")),
+           obs=c(sum(lesbias$visitor.mode=="NR2",na.rm = T),
+          sum(lesbias$visitor.mode=="NR",na.rm = T),
+          sum(lesbias$visitor.mode=="T",na.rm = T),
+          sum(lesbias$visitor.mode=="P/T",na.rm = T),
+          sum(lesbias$visitor.mode=="P",na.rm = T)
+          ))
+# This is the total tally for all Lesbias:
+lesbia.noNA
+
+# Set factors into desired plotting order
+lesbia.noNA$modes <- factor(lesbia.noNA$modes, levels = c("R2","R1/R2","T","T/P","P"))
+
+# convert observations into percentages
+lesbia.noNA$perc <- (lesbia.noNA$obs/sum(lesbia.noNA$obs))*100
+lesbia.noNA$perc
+les.noNA.perc<-lesbia.noNA$perc
+names(les.noNA.perc)<-lesbia.noNA$modes
+round(les.noNA.perc,2)
 
 ```
 
@@ -80,9 +119,9 @@ Now, let's check whether there are sex- or species-dependent associations. We do
 
 Why is P/T listed as a pollination? because we cannot rule it out as a pollination and that classification is conservative with respect to our main argument---there is a *lot* of larceny going on, about 50% of all visits.
 
-```{r lesbia-splits}
+```{r lesbia-splits-v1}
 #
-#Check whether there are sex-dependent differences
+#Check whether there are sex-dependent differences v1
 #
 
 les.sex.not.na<-complete.cases(lesbias[,c(which(names(lesbias)=="bird.sex"),which(names(lesbias)=="visitor.mode"))])
@@ -112,7 +151,7 @@ les.by.sex
 fisher.test(les.by.sex)
 
 #
-#Check whether there are spp-dependent differences
+#Check whether there are spp-dependent differences v1
 #
 
 les.sp.not.na<-complete.cases(lesbias[,c(which(names(lesbias)=="bird.species"),which(names(lesbias)=="visitor.mode"))])
@@ -141,6 +180,111 @@ les.by.sp
 
 fisher.test(les.by.sp)
 ```
+
+```{r lesbia-splits-v2,  eval=T}
+lesbias$mode.bin<-lesbias$visitor.mode
+lesbias$mode.bin[lesbias$visitor.mode=="NR"]<-"robbing"
+lesbias$mode.bin[lesbias$visitor.mode=="NR2"]<-"robbing"
+lesbias$mode.bin[lesbias$visitor.mode=="T"]<-"other"
+lesbias$mode.bin[lesbias$visitor.mode=="T/P"]<-"other"
+lesbias$mode.bin[lesbias$visitor.mode=="P/T"]<-"other"
+lesbias$mode.bin[lesbias$visitor.mode=="P"]<-"other"
+
+# Get rid of no species ID rows
+split.lesbias <- split(lesbias,lesbias$bird.species)
+victoriae <- split.lesbias$victoriae
+nuna <- split.lesbias$nuna
+
+lesbias.new <- rbind(nuna,victoriae)
+lesbias.xtab <- xtabs( ~ bird.species + mode.bin + bird.sex, data = lesbias.new)
+
+library(vcd)
+library(vcdExtra)
+library(MASS)
+
+# simple summaries
+pdf(width=8,height=6,file="mosaic-plot.pdf")
+mosaic(lesbias.xtab, shade=T)
+dev.off()
+lesbias.table<-mosaic(lesbias.xtab, shade=T)
+
+lesbias.table
+
+structable(lesbias.table)
+
+assoc(lesbias.xtab, shade=TRUE)
+
+assocstats(lesbias.xtab)
+
+# Statistical tests
+summary(lesbias.xtab) # outputs chi-square test
+```
+
+## Model Testing
+
+It seems that the best model is Conditional Independence: mode is independent of species, given sex (mod_cond_1A). 
+
+```{r lesbia-lm-stats, eval=T}
+# https://www.statmethods.net/advgraphs/mosaic.html
+# https://www.statmethods.net/stats/frequencies.html
+# http://www.datavis.ca/courses/VCD/vcd-tutorial.pdf
+# http://haleyjeppson.github.io/ggmosaic/articles/ggmosaic.html
+
+
+mod_ind<-loglm(~ mode.bin + bird.species + bird.sex, lesbias.xtab) 
+mod_ind
+
+anova(mod_ind)
+
+# Partial Independence: mode is partially independent of composite variable sex*species
+mod_part_ind1<-loglm(~ mode.bin + bird.species + bird.sex + bird.species * bird.sex, lesbias.xtab)
+mod_part_ind1
+
+
+# Conditional Independence: mode is independent of species, given sex
+mod_cond_1A<-loglm(~ mode.bin + bird.species + bird.sex + mode.bin * bird.sex + bird.species * bird.sex, lesbias.xtab)
+mod_cond_1A
+
+#mod_cond_2<-loglm(~ mode.bin + bird.species * bird.sex, lesbias.xtab)
+#mod_cond_2
+
+#mod_cond_3<-loglm(~ (mode.bin + bird.species) * bird.sex, lesbias.xtab)
+#mod_cond_3
+
+#mod_cond_4<-loglm(~ (mode.bin + bird.sex) * bird.species, lesbias.xtab)
+#mod_cond_4
+
+# Conditional Independence: mode is independent of sex, given species
+mod_cond_1B<-loglm(~ mode.bin + bird.species + bird.sex + mode.bin * bird.species + bird.sex * bird.species, lesbias.xtab)
+mod_cond_1B
+
+# All two-way interactions
+#mod_all2way<-loglm(~ mode.bin * bird.species + mode.bin * bird.sex + bird.species * bird.sex, lesbias.xtab)
+#mod_all2way
+
+# No Three-Way Interaction
+mod_no3way_1<-loglm(~ mode.bin + bird.species + bird.sex + mode.bin * bird.species + bird.species * bird.sex + mode.bin * bird.sex, lesbias.xtab)
+mod_no3way_1
+
+mod_3way_2<-loglm(~ mode.bin * bird.species * bird.sex, lesbias.xtab)
+mod_3way_2
+
+anova(mod_ind,mod_no3way_1)   
+anova(mod_ind,mod_part_ind1)
+anova(mod_ind,mod_cond_1B)
+anova(mod_ind,mod_cond_1A)
+anova(mod_cond_1A,mod_cond_1B)
+
+anova(mod_ind,mod_part_ind1,mod_cond_1A,mod_cond_1B,mod_no3way_1)
+LRstats(mod_ind,mod_part_ind1,mod_cond_1A,mod_cond_1B,mod_no3way_1)
+
+anova(mod_ind,mod_part_ind1,mod_cond_1A,mod_no3way_1)
+LRstats(mod_ind,mod_part_ind1,mod_cond_1A,mod_no3way_1)
+
+
+```
+
+### Set-up for plotting 
 
 This sets up plots by species, but it is specifically omitting NA/UNK entries, because it is using the values of nun and vic as calculated for the Fisher Tests (which omit them).
 
@@ -206,9 +350,9 @@ lesbia.col <- colorRampPalette(c('#f03b20','cornflowerblue')) # reddish to bluei
 lesbia.cols <- alpha(lesbia.col(5))
 RBW6 <- c(lesbia.cols,'#EAEFEDFF')
 
-# First plotting attempt with red:blue:white and observation counts, not percentages
-l1 <- ggplot(lesbia.tally, aes(1, obs, fill=modes)) + 
-  geom_bar(data=lesbia.tally,stat="identity") +
+# First plotting attempt with red:blue:white and observation percentages WITHOUT UNKNOWN mode observations
+l1 <- ggplot(lesbia.noNA, aes(1, perc, fill=modes)) + 
+  geom_bar(data=lesbia.noNA,stat="identity") +
   scale_fill_manual(values=RBW6) +
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),

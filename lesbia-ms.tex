@@ -1,85 +1,82 @@
-\documentclass[12pt]{article}
-\usepackage{evolution}
+\documentclass[fleqn,10pt,lineno]{wlpeerj}
+\usepackage[hidelinks]{hyperref}
 
-% Guidelines: https://wilsonsociety.org/pubs/wjo/
+% Wilson Society Guidelines: https://wilsonsociety.org/pubs/wjo/
 %TITLE PAGE: place right running head (RRH; shortened title, max 50 characters, capitalize first word and proper nouns only) at top of page, followed by left running head (LRH), author(s) name(s) in regular type: use initials and surname for single author; both surnames connected by ?and? for co-authors; and surname et al. for multi-authors. The running head for Short Communications is RRH: Short Communications.
 
-\begin{document}
 
 %--------------------------------------------------
 % TITLE PAGE
 %--------------------------------------------------
-\noindent\textit{LRH: Igi\'c \& Fenberg} \\
-\noindent\textit{RRH: Short Communications: Trainbearer Robbers} \\
-\noindent\textit{Version}: \textit{\today}
 
 % Title ideas:
 % Neither breaking nor entering: occurrence of secondary nectar robbing in Trainbearers (Lesbia, Trochilidae)
+% Nectar larceny in the trainbearers (Lesbia, Trochilidae)
 
-\begin{center}
-    %\large{\textbf{Nectar larceny is common in the trainbearers \textit{Lesbia} (Trochilidae)}}
-    \large{\textbf{Nectar larceny is common in the trainbearers (\textit{Lesbia}, Trochilidae)}}
-\parskip = 0.2in
+\title{Nectar larceny in the trainbearers (\textit{Lesbia}, Trochilidae)}
 
-\normalsize
+\author[1,2]{Boris Igi\'c}
+\author[1]{Ivory Nguyen}
+\author[3,4]{Phillip B.~Fenberg}
+\affil[1]{Department of Biological Sciences, University of Illinois at Chicago, Chicago, IL 60607, U.S.A.}
+\affil[2]{Botany Department, The Field Museum, 1400 South Lake Shore Drive, Chicago, Illinois 60605, U.S.A.}
+\affil[3]{School of Ocean and Earth Sciences, National Oceanography Centre Southampton, University of Southampton, Southampton, U.K.}
+\affil[4]{Department of Life Sciences, Natural History Museum, London, U.K.}
+%\corrauthor[1,3]{}{boris@uic,phil@south}
 
-\noindent 
-Boris Igi\'c$^{1}$,
-%
-and Phillip E.~Fenberg$^{2}$
-%
-\end{center}
-%
-\noindent$^{1}$Department of Biological Sciences, University of Illinois at Chicago, Chicago, IL 60607, U.S.A. \\
-%
-\noindent$^{2}$Ocean and Earth Sciences, National Oceanography Centre Southampton, University of Southampton, Southampton, U.K.\\
-%
-%
-
-
-\linenumbers
+%\keywords{nectar robbing, floral larceny, pollination, trainbearers, hummingbirds, feeding behavior}
 
 %--------------------------------------------------
-\section*{Abstract}
+% ABSTRACT 
 %--------------------------------------------------
 
-Many hummingbirds engage in floral larceny, a suite of so-called `illegitimate' visits in which birds take nectar without providing pollination services. To the best of our knowledge, we provide the first published report of nectar robbing behavior in trainbearers and analyze the proportion of plant visits categorized by mode of interaction as primary robbing, secondary robbing, theft, and/or pollination.  We then augment our original field observations with a trove of data from citizen science databases and literature to find that ca.~40\% of recorded nectar foraging visits are `illegitimate,' dominated by nectar robbing. We discuss the significance of the findings in the context of recent developments in study of nectar foraging, larceny, and pollination from both avian and plant perspectives.\\
-\vfill
-% Following the Abstract, include 5 to 7 key words (lowercase except for proper nouns, separated by commas) in alphabetical order that summarize the results of the study.
+\begin{abstract}
+
+Many flower visitors engage in floral larceny, a suite of so-called `illegitimate' visits in which foragers take nectar without providing pollination services. %insert transition sentence here
+The data on prevalence of illegitimate visits among hummingbirds, as well as the total proportion of foraging and diet that such visits comprise is broadly lacking.
+Here, we report the occurrence of nectar larceny in both currently recognized species of trainbearers and analyze the proportion of plant visits categorized by mode of interaction as: primary robbing, secondary robbing, theft, and/or pollination.  
+To the best of our knowledge, we provide the first published report identifying robbing in these species.
+We augment our original field observations using a trove of data from citizen science databases and literature.
+Although it is difficult to distinguish primary vs. secondary robbing and theft vs. pollination, we conservatively estimate that ca.~40\% of the recorded nectar foraging visits involve nectar robbing. 
+Males appear to engage in robbing marginally more than females, but further studies are necessary to confidently examine the multi-way interactions among sex, species, mode of visitation, and other factors.
+We discuss the significance of these findings in the context of recent developments in study of nectar foraging, larceny, and pollination from both avian and plant perspectives.
+\end{abstract}
 
 
-\noindent \textit{Keywords:} 
-nectar robbing, 
-floral larceny,
-pollination, 
-trainbearers, 
-hummingbirds, 
-feeding behavior
+\begin{document}
 
-\clearpage
+\flushbottom
+\maketitle
+\thispagestyle{empty}
 
 %--------------------------------------------------
-%\section*{Introduction} %omit the heading (journal instructions)
+\section*{Introduction}
 %--------------------------------------------------
+%\linenumbers
 %
 % Floral larceny and its terminology
 %
-There is a growing list of bird species known to rely on so-called `illegitimate' flower visits, or floral larceny, in which nectar is taken without providing pollination services \citep{irwin2010}.
-Floral larceny is correspondingly gaining a broader appreciation as an important factor shaping the ecology and evolution of plant-animal interactions. %lara,ornelas,people who measured plant effects of robbing
-Although species such as flower piercers (\textit{Diglossa}, Passeriformes) are widely appreciated to depend on nectar larceny, there are many reports of illegitimate visits by hummingbirds.
-Some morphological characteristics of hummingbirds, including bill length and tomial serrations, are thought to be particularly closely associated with nectar larceny \citep{ornelas1994}.
+% FIXME: make table 1 of terminology (each mode)
 
-Nearly all plant species that provide nectar and pollen rewards experience larceny, most often from insects and vertebrates, and many defend against it. %cite
+A growing list of bird species across several clades are known to forage for nectar on so-called `illegitimate' flower visits, in which flower rewards are taken without the requisite provision of pollination services.
+Also termed `floral larceny,' this mode of foraging is correspondingly gaining a broader appreciation as an important factor shaping the ecology and evolution of plant-animal interactions \citep{lara2001,irwin2010,rojas-nossa2016,boehm2018}.
+Although species such as flower piercers (\textit{Diglossa}, Passeriformes) are widely known to depend on nectar larceny, there are many reports of illegitimate visits by hummingbirds \citep{lara2001,gonzalez2016}.
+Some morphological characteristics of hummingbirds, including bill length and tomial serrations, are thought to be particularly closely associated with nectar larceny (\citealt{ornelas1994}, but see \citealt{rico-guevara2019}).
+
+Nearly all plants that provide nectar and pollen rewards experience larceny, most often from insects and vertebrates, and many defend against it \citep{irwin2010}.
 The remarkable frequency of illegitimate visits necessitated the development and adoption of a more precise lexicon of larceny \citep{inouye1980}, which attempts to separate it into canonical modes, partly in service of conceptual clarification useful in pursuit of identifying its ecological and evolutionary causes and consequences.
-Thus, ``primary nectar robbers'' mechanically create of a hole in flower tissue through which they remove nectar, bypassing the floral opening. 
-By contrast, ``secondary nectar robbers'' remove nectar utilizing openings previously fashioned by primary robbers.\footnote{This is stealing without vandalism; the proverbial door was previously broken and now it's a matter of locating any unstolen goods.}
-Nearly as a pollinator might, ``nectar thieves'' access nectar through the floral opening. 
-Due to a mismatch between flower and thief morphology or behavior, however, pollination does not take place. 
+Thus, ``primary nectar robbers'' mechanically create a hole in flower tissue through which they remove nectar, bypassing the floral opening. 
+By contrast, ``secondary nectar robbers'' remove nectar utilizing openings previously fashioned by primary robbers. %\footnote{This is stealing without vandalism; the proverbial door was previously broken and now it's a matter of locating any unstolen goods.}
+Deceptively resembling pollinators, ``nectar thieves'' also access nectar through the floral opening. 
+However, due to a mismatch between flower and thief morphology or behavior, pollination does not take place. 
 Finally, some plant species are vulnerable to ``base workers,'' visitors that can probe along the base of the flower, between the free petals, and obtain nectar while bypassing both the anthers and/or stigma and the requisite damage or robbing.
+
 These modes of nectar foraging may be difficult to distinguish from each other and/or legitimate visits---pollination---without careful observations and manipulations.
-Moreover, they can clearly quantitatively overlap so that, for example, thieving may merely reduce pollination efficiency without eliminating it, or individual birds can engage in a mix of primary and secondary robbing.\footnote{They could also baroquely combine them, for instance, secondarily robbing flowers they primarily robbed, and which they ordinarily legitimately pollinate.}
-While many studies report one or more modes of nectar foraging among hummingbirds, we are unaware of any published assessment of their relative importance.
-%
+Moreover, they can clearly quantitatively overlap so that, for example, thieving may merely reduce pollination efficiency without eliminating it, or individual birds can engage in a mix of primary and secondary robbing.%\footnote{They could also baroquely combine them, for instance, secondarily robbing flowers they primarily robbed, and which they ordinarily legitimately pollinate.}
+While many studies report one or more modes of nectar foraging among hummingbirds \citep{mcdade1980,roubik1985,feinsinger1987,ornelas1994}, we are unaware of any published assessment of their relative importance, which is critical for a more complete understanding of plant-animal interactions, and the incentives and behaviors that drive the observed patterns.
+% Relatively quantifying the modes of nectar foraging could enable us to understand ...
+% Further unanswered questions about tomia and whatnot ... evolutionary game stuff.
+
 %Hummingbirds, tomia, morphology and diets
 %
 %Set up: Overestimate of primary robbing, points at possibly generally successful defense against primary robbing by hummingbirds, and a possible broader association of chemical defenses and tubular (sympetalous) hummingbird "syndrome" flowers;  Settles Ornelas 1994 vs Rico-Guevara argument by removing many species thought to be primary robbing (without serrated tomia), but allows for serrations to have (dual) functions. See Table 1 in Pelayo2011 for list of many secondary and only one primary robber; list of questions arising in irwin2010.
@@ -88,180 +85,308 @@ While many studies report one or more modes of nectar foraging among hummingbird
 % P.S. Weller2004 was knocked down for introducing a third species: see here: http://www.museum.lsu.edu/~Remsen/SACCprop143.htm
 
 % "Here, we" paragraph
-Here, we present original observations and a larger meta-analysis of nectar foraging by green- and black-tailed trainbearers (Lesbia nuna and L. victoriae), and discuss their significance in the context of plant-pollinator co-evolution and bill morphology. The original observations took place in and around Ollantaytambo, Peru, on \textit{Brugmansia sanguinea}, \textit{Fuchsia boliviensis}, and \textit{Passiflora tripartita}.  We document the proportion of pollination, theft, and primary- and secondary-robbing visits to flowers, by leveraging images from citizen-science databases eBird, iNaturalist, and other photographed/reported occurrences in the literature. Our highly preliminary analyses find that floral larceny is surprisingly common, at least ca. 40\%, and that secondary robbing may be more common among hummingbirds than is generally appreciated, further complicating the proposed association between tomial serrations and mode of nectar foraging. %many illegitimate visits are on flowers pollinated by Ensifera, but some unexpected ones, too! "further complicating" should be later explained in terms of other hypotheses for presence of tomial serrations, as well as the implication of common secondary robbing.
+Here, we present original observations and a larger meta-analysis of nectar foraging by Green- and Black-tailed Trainbearers (\textit{Lesbia nuna} and \textit{L. victoriae}), and discuss their significance in the context of plant-pollinator co-evolution and bill morphology. The original observations took place in and around Ollantaytambo, Peru, on \textit{Brugmansia sanguinea}, \textit{Fuchsia boliviensis}, and \textit{Passiflora tripartita}.  We coarsely document the proportion of pollination, theft, and primary- and secondary-robbing visits to flowers, by leveraging images from citizen-science databases eBird, iNaturalist, and other photographed/reported occurrences in the literature. Our highly preliminary analyses find that floral larceny is surprisingly common, at least ca. 40\%, and that secondary robbing may be more common among hummingbirds than is generally appreciated, further complicating the proposed association between tomial serrations and mode of nectar foraging \citep{ornelas1994,rico-guevara2019}. %many illegitimate visits are on flowers pollinated by Ensifera, but some unexpected ones, too! "further complicating" should be later explained in terms of other hypotheses for presence of tomial serrations, as well as the implication of common secondary robbing.
 \\
 
 %--------------------------------------------------
 \section*{Materials and Methods}
 %--------------------------------------------------
 
-\subsection*{Site description}
+% FIXME: add contingency table for sex, ID, mode
 
-On January 14th, 2019, we recorded and photographed a male green-tailed trainbearer, Lesbia nuna (Lesson, 1832), which nectar-robbed several flowers of \textit{Fuchsia boliviensis} (Onagraceae) in Ollantaytambo, Peru ($13^{\circ}$15$'$44$''$S, $72^{\circ}$16$'$14$''$W), and then followed the same individual on a 50m foraging bout, while it nectar-robbed flowers of \textit{Brugmansia sanguinea} (Solanaceae)---a species with spectacular ca. 30cm-long tubular crimson-to-yellow flowers---and then legitimately visiting \textit{Salvia leucantha} (Lamiaceae). Both rusty and black-throated flowerpiercer (\textit{Diglossa sittoides} and \textit{D. brunneiventris}) occur at relatively high densities in the area (B.I. and P.B.F., unpub. data), are known to pierce both \textit{Fuchsia} and \textit{Brugmansia} species, and may have been responsible for the previously made calyx and petal hole at the base of \textit{B. sanguinea} flower.
+\subsection*{Species and site description}
+
+The genus \textit{Lesbia} is currently comprised of two short-billed hummingbird species, Green-tailed Trainbearer, \textit{Lesbia nuna} (Lesson, 1832), and Black-tailed Trainbearer, \textit{Lesbia victoriae} (Bourcier \& Mulsant, 1846). 
+Their geographic distributions largely overlap, ranging from Colombia to Peru in montane scrub and other semi-open habitats. 
+The species are differentiated by color, specifically the extent of emerald green on dorsal side and tail (more in \textit{L. nuna}). 
+Black-tailed Trainbearers are generally larger, as well. 
+Both species are strongly sexually dimorphic, with males in possession of a spectacularly long tail.
+The species are difficult to differentiate and confidently assign because of a great amount of geographic variation within each species (many subspecies names exist) and possible existence of undescribed species \citep{weller2004,stiles2004}. %figure out how to cite this: http://www.museum.lsu.edu/~Remsen/SACCprop143.htm
+These difficulties are especially apparent in attempts to identify individuals from single photographs, and we consequently conducted our analyses (see below) at the generic level.
+
+On January 14th, 2019, we recorded and photographed a male Green-tailed Trainbearer, \textit{Lesbia nuna}, which nectar-robbed several flowers of \textit{Fuchsia boliviensis} (Onagraceae) in Ollantaytambo, Peru ($13^{\circ}$15$'$44$''$S, $72^{\circ}$16$'$14$''$W), and then followed the same individual on a 50m foraging bout, while it nectar-robbed flowers of \textit{Brugmansia sanguinea} (Solanaceae)---a species with spectacular ca. 30cm-long tubular crimson-to-yellow flowers---and then legitimately visiting \textit{Salvia leucantha} (Lamiaceae). Both rusty and black-throated flowerpiercer (\textit{Diglossa sittoides} and \textit{D. brunneiventris}) occur at relatively high densities in the area (B.I. and P.B.F., unpub. data), are known to pierce both \textit{Fuchsia} and \textit{Brugmansia} species, and may have been responsible for the previously made calyx and petal hole at the base of \textit{B. sanguinea} flower.
 
 \subsection*{Literature searches}
 
 We examined the literature and internet resources to accumulate a database of additional instances of nectar collecting visits by \textit{Lesbia} species. 
-First, we used internet and Google Scholar keyword searches of the existing scientific literature (e.g. `Datura' or `Brugmansia' and `Lesbia' or `trainbearer'; `Lesbia' and  `diet'). 
+First, we used internet and Google Scholar exact keyword searches of the existing scientific literature, including: `Datura' or `Brugmansia' and `Lesbia' or `trainbearer'; `Lesbia' and  `diet'. 
+We employed ``advanced search" filtering to reduce the considerable volume of inappropriate content.
 Documentation of any details on foraging ecology of the trainbearers is sparse. 
 We found two references hinting at illegitimate flower visits by trainbearers. \citet[p.15]{gould1861} cited in \citet{ornelas1994}, contains a passing reference to piercing of a \textit{Brugmansia sp.} flower by a \textit{Lesbia sp.}, but the visit was inferred as insect predation, not nectar robbing, as later re-framed by \citet{ornelas1994}, and neither the species nor locations were identified. 
-In a paper documenting secondary robbing behavior in cinereus conebills, \citet{vogt2006} mentions unpublished observations of secondary nectar robbing by a trainbearer species on a species of \textit{Fuschia}.  
-Our literature search and two substantial meta-analyses \citep{ornelas1994,irwin2010} did not retrieve any other references to illegitimate visits by these species. 
+In a paper documenting secondary robbing behavior in Cinereous Conebill, \citet{vogt2006} mentions unpublished observations of secondary nectar robbing by a trainbearer. % on three genera/species that we have in the data.  
+Our literature search and two substantial meta-analyses \citep{ornelas1994,irwin2010} did not retrieve any other references to illegitimate visits by trainbearers. 
 Additionally, although we could find no papers documenting their foraging ecology in any detail, gut contents of a single individual examined did include arthropods \citep{remsen1986}. 
 Therefore, as generally holds for hummingbirds, the trainbearers' diet minimally contains arthropods and nectar. 
 The mode of nectar foraging is, however, unclear. 
 
 \subsection*{Foraging data collection and scoring procedures}
 
-Consequently, we examined all identified species records for the Genus \textit{Lesbia} in two public databases---iNaturalist \citep{inaturalist} and eBird \citep{ebird}. 
+Consequently, we examined all identified species records for the Genus \textit{Lesbia} in two public databases---iNaturalist \citep{inaturalist} and eBird \citep{ebird}, and on the online photo service flickr (https://www.flickr.com). 
 For all resulting records, we applied the same methodology. 
 Images without any flowers were discarded, as were those in which birds were simply perched or flying near a flower.
 We then closely examined the remaining images, in which birds were hovering in close proximity (about a body length) to flowers, and facing them. 
 For that subset, we extracted the location, date, and comment metadata. 
-We scored individual sex (`m',`f', or unknown), re-visited distinguishing marks and confidence of species identification (scoring specific epithets as `nuna', `victoriae', or `sp.'), estimated the mode of interaction (primary nectar-robbing, secondary nectar-robbing, thieving, pollination, or unknown), as well as our confidence in the estimate of the mode of interaction (Low vs. High). 
+We scored individual sex (`m',`f', or unknown), species identification (scoring specific epithets as `nuna', `victoriae', or `sp.'), estimated mode of interaction (primary nectar-robbing, secondary nectar-robbing, thieving, pollination, or unknown), as well as our confidence in the estimate of the mode of interaction (`low' vs. `high'; to help facilitate any re-examination of our results). 
 Finally, with the help of several colleagues, we identified the visited plant species. 
 
 Often, modes of interaction are unclear and we combined terms for the most accurate characterization of interaction. 
 For example, primary vs. secondary nectar robbing and pollination vs. thieving are generally hard to distinguish, so we simply combined the likely interactions. 
-This enables us to conservatively summarize modes of interactions as approximate ranges, without making unnecessary assumptions.
-While identification of trainbearers is relatively easy, assignment of the species epithet can be difficult, on account of great amount of geographic variation and possible existence of undescribed species \citep{weller2004}. %figure out how to cite this: http://www.museum.lsu.edu/~Remsen/SACCprop143.htm
-Therefore, while we recorded the species-level data, we often found identifications to be implausible or uncertain, and we jointly present the feeding habits for all \textit{Lesbia}. %until the taxonomy is clearer
+This enables us to conservatively summarize modes of interactions as approximate ranges, without making unnecessary (and incorrect) assumptions.
+We should note here that nearly all of the combined pollination/thieving visits appear to have been legitimate visits, but establishing the extent of pollen transfer is prohibitively demanding for most studies of modes of nectar feeding.
+%%%
+Similarly, we recorded the species identifications, but found them to be implausible or uncertain for a number of individuals, and we consequently highlight the jointly presented feeding habits for all of \textit{Lesbia}. %until the taxonomy is clearer
+Because of these limitations, as well as the fact that the observations were not randomized in any way, we simply report a number of pooled summary statistics. 
+Nevertheless, pooling over the ignored variable(s) can be misleading, so we perform limited three-way visual analyses, but caution against their over-interpretation. 
+We coarsely examine associations between  species ID (nuna/victoriae), sex (f/m), and binarized mode of interaction with flowers (robbing/other), examining the null hypothesis that the three traits are mutually independent.
+For model selection, we used log-linear models implemented in R package MASS \citep{R}, and AIC scores from LRstats.
+The nature of our data collection and resulting exploratory analyses suggests that any associations ought to be re-tested by obtaining a new set of data in advance of further testing.
+
+% Zar: Ch. 23.6: "However, it is not strictly proper to test statistical hypotheses developed after examining the data to be tested. Therefore, the analysis of a subdivided contingency table should be considered only as a guide to developing hypotheses. Hypotheses suggested by this analysis then can be tested by obtaining a new set of data from the population of interest and stating those hypotheses in advance of the testing."
 
 \subsection*{Bill morphology}
 
-Short-billed hummingbirds and those with serrated tomia are thought to be more likely to nectar-rob, especially flowers with long corolla tubes, co-adapted with long-billed hummingbirds \citep{lara2001}. 
-We did not find a reference to presence/absence of serrated tomia in trainbearers, so we scored this trait in 13 specimens at the Field Museum of Natural History.
-We used a dissecting microscope to visualize and score this trait on the available collections (12 males and one female), as well as measure their bill lengths. 
+Short-billed hummingbirds and those with serrated tomia are thought to be more likely to nectar-rob flowers with long corolla tubes, co-adapted with long-billed hummingbirds \citep{lara2001}. %FIXME rephrase this
+We did not find a reference to presence/absence of serrated tomia in trainbearers, so we scored this trait in 17 specimens of \textit{Lesbia nuna} and four specimens of \textit{Lesbia victoriae} at the Field Museum of Natural History. %FIXME include and count new data
+We used a dissecting microscope to visualize and score this trait on the available collections, as well as measure their bill lengths (tip to operculum). 
 %(accessions: FMNH46385, FMNH222248, FMNH222249, FMNH222250, FMNH222251, FMNH222252, FMNH222254, FMNH222255, FMNH299096, FMNH208193, FMNH299095, FMNH208194, \& FMNH46392).
 % We could not score the serration phenotype in one specimen (male, FMNH222253), as its bill was inconveniently glued together.
-%Tomial serrations are sometimes difficult to score on dried specimens, so we first examined specimens known to display serrations (e.g., \textit{Colibri coruscans}, specimen FMNH179303). 
+%Tomial serrations are sometimes difficult to score on dried specimens, so we first examined specimens known to display serrations (e.g., \textit{Colibri coruscans}, specimen FMNH179303).
+\\ 
 
-All metadata, image locations, and scored data used in our analyses are available online in Supplemental Materials.
+\noindent All accessions, metadata, image locations, and scored data used in our analyses are available online in Supplemental Materials. %FIXME: deposit on Dryad
 \\
 
 %--------------------------------------------------
 \section*{Results}
 %--------------------------------------------------
 
+\subsection*{Field observation of robbing}
 % fixme: need to state our own observations clearly.
-In our field observations, we recorded a single adult male foraging bout, during which this individual visited flowers of three plant species. Approximately ten flowers of \textit{Fuchsia boliviensis} were robbed (unclear if primary or secondary robbing took place) as well as two flowers of \textit{Brugmansia sanguinea}, while five flowers of \textit{Salvia boliviensis} were apparently legitimately visited (ruling out or confirming effected pollination requires controlled experiments). 
-Photographs collected in the course of observations were deposited in a single record on iNaturalist (\href{https://www.inaturalist.org/observations/37206000}{https://www.inaturalist.org/observations/37206000}; \citealt{inaturalist}).
+In our field observations, we recorded a single adult male foraging bout, during which this individual visited flowers of three plant species. Approximately ten flowers of \textit{Fuchsia boliviensis} were robbed (unclear if primary or secondary robbing took place) as well as two flowers of \textit{Brugmansia sanguinea}, while five flowers of \textit{Salvia boliviensis} were apparently legitimately visited (ruling out or confirming pollination success requires controlled experiments). 
+Photographs collected in the course of observations were deposited in iNaturalist (\href{https://www.inaturalist.org/observations/37206000}{https://www.inaturalist.org/observations/37206000}; \citealt{inaturalist}).
 
-In addition, we collected and examined a total of 180 individuals' floral visits on 42 flowering plant genera \cref{figure:fig1}. %fixme (re-count and fix "42" after identifying all plants)
-The mode of interaction for 135 visits could be assigned with some confidence, while the mode of visit interaction for 45 visits is unknown, often because birds were hovering in the vicinity of a flower, immediately before or after nectaring.
-The most common recorded mode was `pollination/thieving'  (46 visits), a category that we conservatively scored as vague because it was nearly impossible to disentagle those modes in many cases, without functional study (bagging and marking flowers).
-Our impression, however, is that the majority of these visits plausibly resulted in pollen transfer.
+\subsection*{Database collection}
+We collected and examined more than 1400 photographs of \textit{Lesbia} and found floral visits for 180 foraging bouts (Figure \ref{fig:fig1}, and Supplementary Data Table) on at least 42 flowering plant genera, identified thus far. %FIXME (re-count and fix "42" after identifying all plants; also photograph number and foraging bouts); Supp Table addition!
+It is unlikely that many of these instances are replicates, recording the same individual, although this is somewhat uncertain for the vicinity of Cerro de Monserrate in Bogota, Colombia, with about a dozen documented foraging bouts. 
+
+% These are the numbers used and reported (Feb 2, 2020: R2:10; R1/R2:41; T:2; T/P:46; P:36; UNK:45)
+
+We assigned the mode of interaction for 135 visits with some confidence, while the mode remains unknown for 45 visits, most often because pictured birds were hovering in the vicinity of a flower, immediately before or after nectaring.
+The most common recorded mode was `pollination/thieving' (46 visits), a category that we scored conservatively (vaguely) because it is clearly continuous, virtually impossible to confidently score separately without functional study. 
+Ideally, one would examine pollen transfer or effected seed set, after bagging and marking flowers.
+Our impression, however, is that the majority of these visits at least plausibly resulted in pollen transfer. 
 The second most common mode was combined `nectar robbing' (primary and secondary robbing; 41 visits) indicating that an individual fed through a pierced hole in the side of the corolla.
 It was followed by `pollination' (36 visits), which indicated a fairly clear legitimate interaction, `secondary nectar robbing' (10 visits), and thieving (2 visits). 
-Although we could not confidently assign any visits to the `primary robbing' mode, this is almost certainly only due to the limitations of our approaches.
+Although we could not confidently assign any visits to the `primary robbing' mode, this is entirely due to the one key limitation of our observational approach, reliance on scoring from photographs.
+If we conservatively lump all `pollination/thieving' and `pollination' observations as legitimate, such visits comprise approximately 60.7\% of the total and illegitimate visits 39.3\% (combining all robbing and thieving).
 
-An examination of 13 specimens of \textit{Lesbia nuna} revealed no evidence of serrations. The imbalance of sex ratio (12 males) is not likely to be important in this instance because serrations are more likely to be present in males \citep{}. %FIXME
-The mean bill length for males was $16.89 \pm 0.47$ mm. 
-The female's bill measured $17.38$ mm.
+With a number of limitations in mind, we present a few preliminary analyses in an attempt to estimate the association of species ID, sex, and mode of visitation. %First, if we ignore species ID uncertainty and lump the observations from the at the generic level, we find that there is a trend of association between crudely scored larceny and sex (Fisher's Exact Test, p=0.06). Similarly, if we ignore sex, the (sometimes uncertain) species ID is weakly associated with with the occurrence of larceny (Fisher's Exact Test, p=0.05). %Clearly, these predictors may interact, so we also examined the association between variables species ID+sex, and crudely scored larceny with a 3-way contingency table (using the \textit{loglm} function in R package MASS; \citealt{R}).
+When these factors are jointly considered in a three-way contingency table, we find that three variables are likely not mutually independent (AIC=$56.43$, LR $\chi^{2}$=$13.55$, d.f.=$4$, p<$0.01$).
+Non-robbing visits by \textit{Lesbia nuna} females and robbing visits by \textit{Lesbia victoriae} males have the highest residuals.
+The lowest AIC model posits conditional independence (mode is independent of species, given sex; AIC=$48.78$, LR $\chi^{2}$=$1.91$, d.f.=$2$, p=$0.39$), indicating that sex differences are greater than species differences.
+One broad interpretation is that the females generally rob less than the (territorial) males.
+We emphasize that this result is preliminary, and the associations may stem from a number of data limitations, especially confounding unmeasured variables, or those not considered \textit{a priori}. 
+For example, more \textit{Lesbia victoriae} males were observed in urban parks where plant communities and robbing frequency may differ, compared to rural or natural areas.
+Moreover, a model with all two-way interactions, but without the three-way interaction of the saturated model, provides only slightly worse fit ($\Delta$AIC=$0.15$). It is therefore presently unclear whether whether species or sex differences are more important in predicting nectar foraging modes.
+
+\subsection*{Bill morphology}
+We examined 17 specimens of \textit{Lesbia nuna} and found no serrated tomia (see example in Figure \ref{fig:fig2}). 
+The imbalance of sex ratio (15 males) is concerning, but perhaps unimportant in this case, because serrations are more likely to be present in males \citep{rico-guevara2019}. 
+The mean bill length for males was $15.9 \pm 0.7$ mm, and for females $14.2 \pm 3.2$ mm. Similarly, we found no tomial serrations in four specimens (three male, one female) of \textit{Lesbia victoriae}. 
+Their mean bill length for males was $14.7 \pm 0.4$ mm, and one female measured $11.0$ mm.
 
 
 %--------------------------------------------------
 \section*{Discussion}
 %--------------------------------------------------
+%Outline of discussion:
+%
+%Our observations preliminary study indicates that nectar robbing comprises a surprisingly common mode of foraging in trainbearers. 
+%
+%First study that quantifies the mode of nectar foraging in hummingbirds
+%
+%Secondary nectar robbing is common and, at least in this species, primary nectar robbing may be rare
+%
+%Consequences for ecology and evolution of plant-animal interaction
+%
+%Sex- and species-dependence (and altitude, unaccounted for predictors)
+%
+%The consequences for Ornelas' hypothesis are unclear. The sexual dimorphism is a solid argument, but even that is not a nail in the coffin, because males and females may have different foraging strategies. Further study needed.
 
 %
-% Some kind of nectar robbing is common
+% Some kind of larceny is increasingly understood to be common
 %
-%Nearly all relevant reports of nectar foraging simply provide presence (or imply absence) of nectar robbing, and do not provide an estimate of the proportion of visits dedicated to illegitimate visits. A few existing studies indicate that, for the species surveyed, the frequency of nectar robbing at the individual-plant level is highly variable, ranging between 8.5-57.6\%. (arizmendi2001) and up to 92% of all flowers in Salvia mexicana (Arizmendi1996).
+Hummingbirds are generally thought to serve as legitimate flower visitors, and effect pollination in exchange for host plant nectar. 
+There is, however, an increasing appreciation of the fact that nectar obtained during illegitimate visits---including both primary and secondary robbing, as well as thieving---may comprise a substantial portion of diets of many species \citep{lara2001,irwin2010,boehm2018}. 
+Presently, the frequency distribution of nectar larceny within and among bird individuals and species, and a variety of covariates (community composition, territoriality, seasonality, geography, etc.) is unclear. 
+Most reports of hummingbird nectar foraging document the presence (or imply absence) of nectar robbing, and do not provide an estimate of the proportion of visits dedicated to illegitimate visits. 
+This is in large part due to the difficulty of accruing this kind of data and, when larceny occurs, separating its modes.  
+
+%
+% We augment observation with citizen science; discuss implications of results
+%
+Our study originated with a simple natural history observation of robbing by a trainbearer, which we  augmented using a trove of citizen-science data from crowd-sourced public databases. We believe that such estimates are a first step in improving our understanding of the dynamics between plants and pollinators, especially why and how (e.g. primary vs. secondary robbing) some individual birds or species steal more than others, how larceny affects plants, and how they respond to larceny. Below, we discuss the results and their immediate implications of this small-scale study and place them in the context of the literature on ecology and evolution of plant-hummingbird interactions.
+
+%
+% Lesbia steal, how much, and context; secondary vs. primary; secondary common?
+%
+We find that both currently described species of \textit{Lesbia} steal nectar, mostly by robbing. 
+Unambiguous illegitimate visitation constitutes a substantial proportion, around 40\% of all nectar foraging visits. 
+A few previous studies indicate that, for the species surveyed at the individual-plant level, the frequency of nectar robbing by birds on plant species can be very high (although variable; \citealt{arizmendi2001}). 
+An unpublished report (D. Boose, cited in \citealt{maloof2000}) found that robbing may comprise up to 92\% of all Stripe-tailed Hummingbird (\textit{Eupherusa exima}) visits in \textit{Razisea spicata}.
+Primary and secondary robbing are generally difficult to disentangle from casual observations \citep{vogt2006,boehm2018}. 
+Confidently scoring the specific mode of robbing (primary vs. secondary) demands evidence bearing on the question whether `breaking-and-entering' took place, which  in turn requires careful experimental data collection that we could not directly collect.
+For example, capturing the act of piercing of flowers or documenting entry through a pre-existing hole could enable unambiguous scoring of robbing mode.
+We find that secondary nectar robbing is relatively common, comprising between 7.4\% and 37.8\% of the visits (Figure \ref{fig:fig1}).
+This large range estimate reflects uncertainty (not variability) due to the limitations of our approach.
+However, we examined additional photographs of many robbed plant species, which frequently show extensive flower damage, and found records of several species of flowerpiercers (\textit{Diglossa}) commonly observed in the areas in close proximity to trainbearer robbing locations (B.I. and P.F. unpub. data).
+It is therefore likely that secondary robbing may represent the majority of illegitimate visits by trainbearers. Moreover, it is possible that this mode of nectar foraging is underestimated  in other hummingbird species.
+
+%
+% Why secondary common and consequences
+%
+From the hummingbird perspective, if primary robbing is more likely to allow access to previously unvisited, relatively nectar-rich flowers, then perhaps secondary robbing ought to be less advantageous \citep{irwin2010}.  
+Framed in this way, any secondary robbing may appear somewhat paradoxical. 
+It is possible that, instead, one or more of the common underlying assumptions are flawed. 
+Specifically, we can imagine that, for example, if they are faced with resource limitation (of flowers that are ordinarily legitimately exploited), trainbearers respond by robbing or thieving from inferior resources, a situation that may be exacerbated by territoriality. 
+Although our study cannot strongly substantiate it, a trend of higher robbing frequency in males than females (complicated by association with species), may be related to such phenomena.
+On the other hand, the evolutionary game between hummingbirds, flowers, and all other interactors (whole pollinator guilds, herbivores, etc.) is likely substantially more complex than is generally appreciated (e.g. \citealt{maloof2000}), broadening the set of conditions for stable non-zero frequencies of secondary robbing.
+
+%
+% Consequences for ecology and evolution of plant-animal interaction
+%
+% discourages animal specialization (gonzalez and loiselle 2016), discourages plant specialization as well as shortening corollas (lara and ornelas 2001), and affects plant defenses; emphasize that it's not only tube length (cite) and shape (boehm/centropogon), but also secondary metabolites.
+
+%
+% How this jives with Ornelas 1994 and Rico-Guevarra 2019
+%
+
+Floral larceny is often targeted at flowers of plants that have close co-evolutionary relationships with other legitimately pollinated animal species, such as the sword-billed hummingbird and its guild of long-flowered species \citep{soteras2018}. 
+Some characteristics of hummingbirds, including bill length and tomial serrations are thought to be particularly closely associated with primary nectar robbing \citep{ornelas1994}.
+The hypothesis that the latter trait, serration of tomia, affects nectar robbing ability and efficiency remains broadly untested. 
+Recent studies suggest that the presence of serrations is sexually dimorphic, with greater or exclusive expression in males, and that this feature could instead be shaped by a role in plumage preening or fighting, especially male territorial defense \citep{rico-guevara2019}. 
+Although additional field studies of nectar robbing and examination of bill morphologies for the presence of serrate tomia are needed to clarify their role, our data provide some insight. %FIXME: more data. 
+First, if secondary nectar robbing is more common than previously thought, the association between serration and (all) robbing observations may be lower and more difficult to detect.
+Serrations may well provide flower-robbing utility, but they are clearly unnecessary for secondary robbing.
+Second, if males rob more frequently, then the existence of sexual dimorphism for tomial serrations is not problematic for the Ornelas hypothesis.
+Moreover, neither sexual dimorphism nor the proposed role in defense precludes simultaneous or exaptive function of serrated tomia in piercing. 
+Consequently, it will be difficult to accumulate a great weight of evidence that exclusively support or detracts from this hypothesis.
+Nevertheless, it is instructive that many other specialized piercers, such as the Wedge-billed Hummingbird (\textit{Schistes geoffroyi} and Purple-crowned fairy \textit{Heliothryx barroti}, fail to present sexually dimorphic serrations \citep{rico-guevara2019}. 
+A systematic search of nectar feeding mode, along with a number of predictors, and coupled with careful studies of feeding behavior and morphology, are likely to be most persuasive in examining the validity and generality of the Ornelas hypothesis.
+%While short-billed hummingbirds stereotypically rob nectar from long sympetalous tubular flowers, competing with legitimate long-billed legitimate visitors, like sword-billed hummingbirds (Ensifera ensifera), observational data presents a slightly more textured picture, with remarkable displays of opportunism. For example, we found a number of documented visits by Lesbia sp. to the composite flowers of Asteraceae (daisy family), as well as the remarkable images of apparent nectar robbing of Brugmansia sanguinea by sword-bills.  %fixme check ID on lesbia
+
+%\subsection*{Effects on plants}
+
+Predominance of different modes of larceny is likely to be associated with differing evolutionary responses from flowering plants, including variation in amount and/or time-dependence of nectar release, mating system (increased reliance on self-fertilization), and defenses, both physical (spines, thicker calyces or bracts) and chemical (secondary metabolites). 
+A number of plant species visited by trainbearers are members of the nightshade family (Solanaceae), known for common production of alkaloids, which are broadly toxic to vertebrates. 
+Perhaps not coincidentally, a great number and quantity of alkaloids are produced by species of \textit{Brugmansia} and \textit{Nicotiana}, and tissue at the base of flowers (calyx) contains some of the highest concentrations of such compounds \citep{saitoh1985, alves2007}. 
+\textit{Brugmansia} species have not been studied in equal detail to tobacco, but at least some plants in this genus can incapacitate juvenile humans, orders of magnitude larger than hummingbirds, following casual skin contact \citep{andreola2008}. 
+Moreover, given that there is a strong association between hummingbird pollination and self-fertility \citep{wolowski2013}, stereotypically hummingbird-pollinated flowers may be more commonly robbed by both avian and hymenopteran robbers. 
+This may be especially true for those flowers with relatively longer tubular corollas and large amounts of nectar \citep{lara2001,rojas-nossa2016}, precisely the syndrome commonly associated with hummingbird pollination.
+
+
+%
+% SOME PROBLEMS Paragraph
 %
 %Feinsinger 1987: "Anthropogenically generated disturbance mosaics may promote the spread of species whose reproductive traits evolved under very different circumstances from mosaics generated by natural disturbances." Both species of trainbearers occupy heavily degraded habitats, and many observations are in disturbed, populated areas. 
 %
+% We do not measure density of flowers or competing visitors, which may unpredictably vary and affect legitimate and illegitimate visits.
+%
 % Stiles 1995 the Condor: More than half of all foraging efforts (both nectaring and predation) involve hunting for arthropods. Nectaring is actually the less-frequent activity.
 %
-% Floral larceny is stereotypically committed on plants that have close co-evolutionary relationships with other animal species, such as sicklebill hummingbirds and sickle-shaped flowers of Centropogon sp.
-% Some morphological characteristics of hummingbirds, including bill length and tomial serrations are thought to be particularly closely associated with nectar larceny \citep{ornelas1994}.
-%
-While short-billed hummingbirds stereotypically rob nectar from long sympetalous tubular flowers, competing with legitimate long-billed legitimate visitors, like sword-billed hummingbirds (Ensifera ensifera), observational data presents a slightly more textured picture, with remarkable displays of opportunism. For example, we found a number of documented visits by Lesbia sp. to the composite flowers of Asteraceae (daisy family), as well as the remarkable images of apparent nectar robbing of Brugmansia sanguinea by sword-bills.  %fixme check ID on lesbia
 
-%
-% Secondary nectar robbing is common and, at least in this species, primary nectar robbing may be rare
-%
-Our findings show that secondary nectar robbing is relatively common, comprising between 7.4\% and 37.8\% of the visits. If it is true that, on the whole, primary robbing allows access to previously unvisited, relatively nectar-rich flowers, then secondary robbing should generally be disadvantageous \citep{irwin2010}.  In this context, our relatively high observed frequency may appear somewhat paradoxical, and more likely, one or more of our underlying assumptions are flawed.  Specifically, we can imagine that, for example, if they are faced with limited supply of resources that are easily legitimately exploited, trainbearers likely respond by robbing or thieving from inferior resources, a situation that may be exacerbated by territoriality. 
 %
 % THREE-WAY CONTINGENCY TABLE (counts of LarcenyYES/LarcenyNO, M/F, nuna/victoriae)
 %
-%
+
 %nice stats page: https://dev.stat.vmhost.psu.edu/stat504/book/export/html/720
 %facetting: http://haleyjeppson.github.io/ggmosaic/articles/ggmosaic.html
 %
 % FIXME: Why we think secondary robbing is at the high end of that range?: Diglossa common in the area(s) across Lesbia range (unpub/supp info), observations likely biased against secondary robbing--rare examination prior to visit?
 
-
-%
-% How this jives with Ornelas 1994 and Rico-Guevarra 2019
-%
-% rico-guevarra2019: "Regarding the flower-piercing hypothesis (Ornelas 1994), this idea was proposed before it was taken into consider- ation that the expression of the tomial serrations is sexually dimorphic (e.g., Rico-Guevara 2014). Consequently, one would expect differences in nec- tar robbing between the sexes. However, males of serrated species have not been reported to pierce more than females, and the reports of nectar rob- bing are not skewed toward hummingbird species with serrated tomia (Robert Colwell personal com- munication). Additionally, hummingbird species that are considered specialized piercers (e.g., Wedge-billed Hummingbird [Schistes geoffroyi], Purple-crowned fairy [Heliothryx barroti]) do not present these sexually dimorphic serrations (Rico- Guevara and Rubega 2017). A thorough discussion of these and other alternative hypotheses for the evolution of serrated tomia in hummingbirds will be provided elsewhere (Gary Stiles personal communication)."
-
-% Complicates ornelas1994 and naysaying: if robbing, and especially, secondary robbing is more common than previously thought, and serrations are more common in males these facts can interact with male territoriality---males inflexibly feed and may need to extract all the resources, despite some costs; moreover it's possible that male-male interactions and robbing are exaptively interacting.
-
-The presence of serrated tomia on the bills of some hummingbird species may represent an adaptation shaped by nectar robbing \citep{ornelas1994}. 
-It remains unclear, however, if the presence of serrated tomia affects nectar robbing ability and efficiency. 
-Recent studies suggest that the presence of serrations is sexually dimorphic, with greater or exclusive expression in males, and that this feature could instead be shaped by a role in plumage preening or fighting, especially male territorial defense \citep{rico-guevara2019}. Although additional field studies of nectar robbing and examination of bill morphologies for the presence of serrate tomia are needed to clarify their role, our data provide some insight and a possible resolution of apparent contradictions.
-% If secondary nectar robbing is more common than previously thought, the number of paired serration+primary robbing observations would be low and more difficult to detect. 
-% Moreover, neither sexual dimorphism nor the proposed role in defense precludes simultaneous or exaptive function of serrated tomia in piercing, which makes the collection of weight of evidence in exclusive support of either hypothesis difficult.
-% It is worth noting
-
-
-%
-% Consequences for ecology and evolution of plant-animal interaction
-%
-%
-% discourages animal specialization (gonzalez and loiselle 2016), discourages plant specialization as well as shortening corollas (lara and ornelas 2001), and affects plant defenses; emphasize that it's not only tube length (cite) and shape (boehm/centropogon), but also secondary metabolites.
-%
-Both modes of larceny are also likely to cause both plastic and evolutionary responses from flowering plants, including variation in proportion and/or time-dependence of nectar release, and placement of secondary metabolites. Interestingly, a number of plant species visited by trainbearers, including members of the nightshade family (Solanaceae), produce alkaloids broadly toxic to vertebrates. For example, \textit{Brugmansia} species can temporarily incapacitate (much larger) juvenile humans by skin contact alone \citep{andreola2008}. 
-Perhaps not coincidentally, a great number and quantity of alkaloids are produced by species of \textit{Brugmansia} and \textit{Nicotiana}, and tissues at the base of flowers (calyx) contain some of the highest concentrations of such compounds \citep{saitoh1985, alves2007}. 
-
-
 %
 % Concluding paragraph
 %
 Our observations and analyses point to additional needed work on systematics and ecology of \textit{Lesbia}, especially their unsettled taxonomy, feeding ecology and energy budgets.  %work into taxonomic confusion: http://www.museum.lsu.edu/~Remsen/SACCprop143.htm
-More broadly, we sorely lack observational data to establish the relative frequencies of nectar feeding modes and detailed manipulative field study to obtain direct evidence for nectar feeding dynamics across all hummingbirds and other nectar-feeding birds \citep{irwin2010}.
-Similarly, a better understanding of plant-side effects and responses, including pollination efficiency, the distribution of visitor interactions \citep{arizmendi2001}, as well as plant incentives and defenses, may help us better explain the dynamics in the co-evolutionary game between flowers and their visitors.
+More broadly, we sorely lack observational data to establish the relative frequencies of nectar feeding modes and manipulative field study to obtain direct evidence for nectar feeding dynamics across all hummingbirds and other nectar-feeding birds \citep{irwin2010}.
+Our study documents the presence of larceny in trainbearers and, more specifically, shows that floral larceny is surprisingly common. 
+These findings indicate that larceny, especially secondary robbing, may be more common among hummingbirds than is generally appreciated.
+Furthermore, we demonstrate that citizen science databases can be fruitfully employed to establish the presence of nectar robbing and coarsely examine its frequency.
+Such approaches can also generate hypotheses and guide an improved understanding of plant-side effects and responses, including pollination efficiency, the distribution of visitor interactions \citep{maloof2000,arizmendi2001}, plant incentives and defenses (as well as overall fitness) (\citealt{pelayo2011}), and ultimately better explain the dynamics in the co-evolutionary game between flowers and their visitors.
 
 %--------------------------------------------------
-\section{Acknowledgements}
+\section*{Acknowledgements}
 %--------------------------------------------------
 
-We thank iNaturalist and eBird projects, and all contributing citizen naturalists whose images and data enabled us to conduct this study. We thank Diego Emerson Torres (\href{https://ebird.org/profile/NzU3NjIy}{https://ebird.org/profile/NzU3NjIy}) for permission to use the image in Figure 1.
+We thank iNaturalist and eBird projects, and all contributing citizen naturalists whose images and data enabled us to conduct this study. We thank Diego Emerson Torres (\href{https://ebird.org/profile/NzU3NjIy}{https://ebird.org/profile/NzU3NjIy}) for permission to use the image in Figure 1. 
+C. Rushworth and C. Rothfels provided generous help with plant species identification, and
+J. Treehorn for fixing the cable.
 This work was supported in part by the National Science Foundation NSF DEB-1655692.
+% Mason-Gamer lab
 
 %--------------------------------------------------
 % References
 %--------------------------------------------------
 \clearpage
 
-\setstretch{1}
 \bibliography{nectar-robbing}
-\bibliographystyle{evolution}
-\setstretch{\stretchby}
+%\setstretch{1}
+%\bibliography{nectar-robbing}
+%\bibliographystyle{evolution}
+%\setstretch{\stretchby}
+
+%--------------------------------------------------
+% Tables
+%--------------------------------------------------
+
+
+\begin{table}[ht]
+\caption{\label{tab:widgets} Cross tabulation data of nectar foraging mode, sex, and species identity for \textit{Lesbia spp.}. `Other' denotes lumped pollination and thieving, and `Larceny' combines both modes of robbery. Sex identification relied on tail length and subtle color differences as a proxy, and species identification was in nearly all cases copied from the original source. Of 180 total foraging bouts captured, we assigned visit mode to 135, and each of visit (nectar foraging) mode, sex, and species to 114 shown in the table.}
+\centering
+\begin{tabular}{@{\vrule height 8pt depth 4pt width 0pt}llcc}
+           			& 		& Other 	& Robbing \\ \hline
+    {\em L. nuna} 	& Female 	& 18 	& 5 \\
+    				& Male 	& 12 	& 7 \\ \hline
+   {\em L. victoriae} 	& Female 	& 16 	& 7 \\
+    				& Male 	& 23	& 26 \\ \hline
+\end{tabular}
+\end{table}
+\clearpage
+
 
 %--------------------------------------------------
 % Figures
 %--------------------------------------------------
 
-%TABLES & FIGURES in-text references to figures and tables should be parenthetical to the text (i.e., cited only in parentheses to support text) Use a consistent font and style throughout (e.g., 12-pt font, Times New Roman is preferred). Do not use boldface font for figure keys and axis labels. Capitalize first word of figure keys and axis labels; all other words are lower case except proper nouns.
+%To include it in your document, use the includegraphics command as in the code for Figure~\ref{fig:view} below.
 
-\begin{figure}
+\begin{figure}[ht]
+\centering
 \includegraphics[width=1\textwidth]{fig1/marauding_lesbias_fig_1b.pdf}
-\caption{A nectar robbing visit by a black-tailed trainbearer \textit{Lesbia victoriae} on \textit{Brugmansia sanguinea}, whose flower was previously pierced by a species of \textit{Diglossa} (Photo by Diego Emerson Torres; used with generous permission of author). Right panel: A bar plot illustrating the relative visit mode frequencies of \textit{Lesbia} species (n=180).}
-\label{figure:fig1}
+\caption{A nectar robbing visit by a Black-tailed Trainbearer \textit{Lesbia victoriae} on \textit{Brugmansia sanguinea}, whose flower was previously pierced by a species of \textit{Diglossa} (Photo by Diego Emerson Torres; used with permission). Right panel: A bar plot illustrating the relative visit mode frequencies of \textit{Lesbia} species (n=180). Of the 135 visits whose mode is known (could be assigned), 60.7\% were legitimate (combining pollination and pollination/thieving) and 39.3\% illegitimate (combining all robbing and thieving).}
+\label{fig:fig1}
 \end{figure}
 
 \pagebreak
 
-\begin{suppfigure}
+\begin{figure}[ht]
 \begin{center}
-\includegraphics[width=0.5\textwidth]{fig2/Lesbia-nuna-FMNH-222250-1-Male.jpeg}
-\caption{Anterior side of the bill of a male \textit{Lesbia nuna}, FMNH-222250, with no conspicuous serations on its mandibular (or maxillary) tomia. Background scale is denoted in mm distance units.}
-\label{figure:figS2}
+\includegraphics[width=0.6\textwidth]{fig2/Lesbia-nuna-FMNH-222250-1-Male.jpeg}
+\caption{Anterior side of the bill of a male \textit{Lesbia nuna}, FMNH-222250, with no conspicuous serrations on its mandibular (or maxillary) tomia. For scale, a ruler denoted in millimeters is seen in the background.}
+\label{fig:fig2}
 \end{center}
-\end{suppfigure}
+\end{figure}
+
+
+% FIXME: Move this to Supp Mats
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=1\textwidth]{/Users/boris/Dropbox/PROJECTS/nectar-robbing/larceny-paper/writing/lesbia-robbers/figS/mosaic-plot-v2.pdf}
+\captionsetup{labelformat=empty,labelsep=none}
+\caption{{\bf Supplementary Figure S1.} Mosaic plot of data presented in Table 1, illustrating the three-way contingency table. Cells sizes are proportional to observation number for each category. Shading color illustrates values of Pearson residuals (dark = greater than 2.0), as shown in scale on right.}
+%\label{fig:fig3}
+\end{center}
+\end{figure}
 
 %--------------------------------------------------
 % Supplemental Materials

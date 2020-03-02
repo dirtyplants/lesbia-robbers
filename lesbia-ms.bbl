@@ -1,86 +1,159 @@
-\begin{thebibliography}{14}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\providecommand{\urlprefix}{URL }
+\begin{thebibliography}{}
 
-\bibitem[{Alves et~al.(2007)Alves, Sartoratto, and Trigo}]{alves2007}
-Alves, M.~N., A.~Sartoratto, and J.~R. Trigo, 2007.
+\bibitem[Alves et~al., 2007]{alves2007}
+Alves, M.~N., Sartoratto, A., and Trigo, J.~R. (2007).
 \newblock Scopolamine in {\em {b}rugmansia suaveolens} ({S}olanaceae): defense,
   allocation, costs, and induced response.
-\newblock Journal of Chemical Ecology 33:297--309.
+\newblock {\em Journal of Chemical Ecology}, 33(2):297--309.
 
-\bibitem[{Andreola et~al.(2008)Andreola, Piovan, Da~Dalt, Filippini, and
-  Cappelletti}]{andreola2008}
-Andreola, B., A.~Piovan, L.~Da~Dalt, R.~Filippini, and E.~Cappelletti, 2008.
+\bibitem[Andreola et~al., 2008]{andreola2008}
+Andreola, B., Piovan, A., Da~Dalt, L., Filippini, R., and Cappelletti, E.
+  (2008).
 \newblock Unilateral mydriasis due to angel's trumpet.
-\newblock Clinical Toxicology 46:329--331.
+\newblock {\em Clinical Toxicology}, 46(4):329--331.
 
-\bibitem[{Arizmendi(2001)}]{arizmendi2001}
-Arizmendi, M. d.~C., 2001.
+\bibitem[Arizmendi, 2001]{arizmendi2001}
+Arizmendi, M. d.~C. (2001).
 \newblock Multiple ecological interactions: nectar robbers and hummingbirds in
   a highland forest in {M}exico.
-\newblock Canadian Journal of Zoology 79:997--1006.
+\newblock {\em Canadian Journal of Zoology}, 79(6):997--1006.
 
-\bibitem[{Gould(1861)}]{gould1861}
-Gould, J., 1861.
-\newblock An introduction to the Trochilidae, or family of humming-birds.
+\bibitem[Boehm, 2018]{boehm2018}
+Boehm, M. (2018).
+\newblock Biting the hand that feeds you: wedge-billed hummingbird is a nectar
+  robber of a sicklebill-adapted {A}ndean bellflower.
+\newblock {\em Acta Amazonica}, 48(2):146--150.
+
+\bibitem[Feinsinger et~al., 1987]{feinsinger1987}
+Feinsinger, P., Beach, J.~H., Linhart, Y.~B., Busby, W.~H., and Murray, K.~G.
+  (1987).
+\newblock Disturbance, pollinator predictability, and pollination success among
+  {Costa Rican} cloud forest plants.
+\newblock {\em Ecology}, 68(5):1294--1305.
+
+\bibitem[Gonzalez and Loiselle, 2016]{gonzalez2016}
+Gonzalez, O. and Loiselle, B.~A. (2016).
+\newblock Species interactions in an andean bird--flowering plant network:
+  phenology is more important than abundance or morphology.
+\newblock {\em PeerJ}, 4:e2789.
+
+\bibitem[Gould, 1861]{gould1861}
+Gould, J. (1861).
+\newblock {\em An introduction to the Trochilidae, or family of humming-birds}.
 \newblock Published by author.
 
-\bibitem[{iNaturalist(2019)}]{inaturalist}
-iNaturalist, 2019.
-\newblock \urlprefix\url{https://www.inaturalist.org}.
+\bibitem[iNaturalist, 2019]{inaturalist}
+iNaturalist (2019).
 \newblock Accessed on 12/25/2019.
 
-\bibitem[{Inouye(1980)}]{inouye1980}
-Inouye, D.~W., 1980.
+\bibitem[Inouye, 1980]{inouye1980}
+Inouye, D.~W. (1980).
 \newblock The terminology of floral larceny.
-\newblock Ecology 61:1251--1253.
+\newblock {\em Ecology}, 61(5):1251--1253.
 
-\bibitem[{Irwin et~al.(2010)Irwin, Bronstein, Manson, and
-  Richardson}]{irwin2010}
-Irwin, R.~E., J.~L. Bronstein, J.~S. Manson, and L.~Richardson, 2010.
+\bibitem[Irwin et~al., 2010]{irwin2010}
+Irwin, R.~E., Bronstein, J.~L., Manson, J.~S., and Richardson, L. (2010).
 \newblock Nectar robbing: ecological and evolutionary perspectives.
-\newblock Annual Review of Ecology, Evolution, and Systematics 41:271--292.
+\newblock {\em Annual Review of Ecology, Evolution, and Systematics},
+  41:271--292.
 
-\bibitem[{Lara and Ornelas(2001)}]{lara2001}
-Lara, C. and J.~Ornelas, 2001.
+\bibitem[Lara and Ornelas, 2001]{lara2001}
+Lara, C. and Ornelas, J. (2001).
 \newblock Preferential nectar robbing of flowers with long corollas:
   experimental studies of two hummingbird species visiting three plant species.
-\newblock Oecologia 128:263--273.
+\newblock {\em Oecologia}, 128(2):263--273.
 
-\bibitem[{Ornelas(1994)}]{ornelas1994}
-Ornelas, J.~F., 1994.
+\bibitem[Maloof and Inouye, 2000]{maloof2000}
+Maloof, J.~E. and Inouye, D.~W. (2000).
+\newblock Are nectar robbers cheaters or mutualists?
+\newblock {\em Ecology}, 81(10):2651--2661.
+
+\bibitem[McDade and Kinsman, 1980]{mcdade1980}
+McDade, L.~A. and Kinsman, S. (1980).
+\newblock The impact of floral parasitism in two neotropical
+  hummingbird-pollinated plant species.
+\newblock {\em Evolution}, 34(5):944--958.
+
+\bibitem[Ornelas, 1994]{ornelas1994}
+Ornelas, J.~F. (1994).
 \newblock Serrate tomia: An adaptation for nectar robbing in hummingbirds?
-\newblock The {A}uk 111:703--710.
+\newblock {\em The {A}uk}, 111(3):703--710.
 
-\bibitem[{Remsen et~al.(1986)Remsen, Stiles, and Scott}]{remsen1986}
-Remsen, J., F.~G. Stiles, and P.~E. Scott, 1986.
+\bibitem[Pelayo et~al., 2011]{pelayo2011}
+Pelayo, R.~C., Rengifo, C., and Soriano, P.~J. (2011).
+\newblock Avian nectar robbers of {\em {p}assiflora mixta} ({P}assifloraceae):
+  do they have a positive effect on the plant?
+\newblock {\em Interciencia}, 36(8):587--592.
+
+\bibitem[{R Core Team}, 2019]{R}
+{R Core Team} (2019).
+\newblock {\em R: A Language and Environment for Statistical Computing}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria.
+
+\bibitem[Remsen et~al., 1986]{remsen1986}
+Remsen, J., Stiles, F.~G., and Scott, P.~E. (1986).
 \newblock Frequency of arthropods in stomachs of tropical hummingbirds.
-\newblock The Auk 103:436--441.
+\newblock {\em The Auk}, 103(2):436--441.
 
-\bibitem[{Saitoh et~al.(1985)Saitoh, Noma, and Kawashima}]{saitoh1985}
-Saitoh, F., M.~Noma, and N.~Kawashima, 1985.
+\bibitem[Rico-Guevara et~al., 2019]{rico-guevara2019}
+Rico-Guevara, A., Rubega, M., Hurme, K., and Dudley, R. (2019).
+\newblock Shifting paradigms in the mechanics of nectar extraction and
+  hummingbird bill morphology.
+\newblock {\em Integrative Organismal Biology}, 1(1):oby006.
+
+\bibitem[Rojas-Nossa et~al., 2016]{rojas-nossa2016}
+Rojas-Nossa, S.~V., S{\'a}nchez, J.~M., and Navarro, L. (2016).
+\newblock Effects of nectar robbing on male and female reproductive success of
+  a pollinator-dependent plant.
+\newblock {\em Annals of botany}, 117(2):291--297.
+
+\bibitem[Roubik et~al., 1985]{roubik1985}
+Roubik, D.~W., Holbrook, N.~M., and Parra, G.~V. (1985).
+\newblock Roles of nectar robbers in reproduction of the tropical treelet
+  quassia amara (simaroubaceae).
+\newblock {\em Oecologia}, 66(2):161--167.
+
+\bibitem[Saitoh et~al., 1985]{saitoh1985}
+Saitoh, F., Noma, M., and Kawashima, N. (1985).
 \newblock The alkaloid contents of sixty {Nicotiana} species.
-\newblock Phytochemistry 24:477--480.
+\newblock {\em Phytochemistry}, 24(3):477--480.
 
-\bibitem[{Sullivan et~al.(2009)Sullivan, Wood, Iliff, Bonney, Fink, and
-  Kelling}]{ebird}
-Sullivan, B.~L., C.~L. Wood, M.~J. Iliff, R.~E. Bonney, D.~Fink, and
-  S.~Kelling, 2009.
+\bibitem[Soteras et~al., 2018]{soteras2018}
+Soteras, F., More, M., Ibanez, A.~C., del Rosario~Iglesias, M., and Cocucci,
+  A.~A. (2018).
+\newblock Range overlap between the sword-billed hummingbird and its guild of
+  long-flowered species: An approach to the study of a coevolutionary mosaic.
+\newblock {\em {PloS One}}, 13(12).
+
+\bibitem[Stiles, 2004]{stiles2004}
+Stiles, F.~G. (2004).
+\newblock {Proposal (143) to South American Classification Committee Split
+  {{\em Lesbia gouldii} from {\em Lesbia nuna}}}.
+\newblock Accessed on 01/21/2020.
+
+\bibitem[Sullivan et~al., 2009]{ebird}
+Sullivan, B.~L., Wood, C.~L., Iliff, M.~J., Bonney, R.~E., Fink, D., and
+  Kelling, S. (2009).
 \newblock {eBird}: {A} citizen-based bird observation network in the biological
   sciences.
-\newblock Biological Conservation 142:2282--2292.
+\newblock {\em Biological Conservation}, 142(10):2282--2292.
 
-\bibitem[{Vogt(2006)}]{vogt2006}
-Vogt, C.~A., 2006.
+\bibitem[Vogt, 2006]{vogt2006}
+Vogt, C.~A. (2006).
 \newblock Secondary nectar robbing, a previously unsubstantiated foraging
   behavior of the {Cinereous Conebill} ({\em {c}onirostrum cinereum}).
-\newblock Ornitologia Neotropical 17:613--617.
+\newblock {\em Ornitologia Neotropical}, 17(4):613--617.
 
-\bibitem[{Weller and Schuchmann(2004)}]{weller2004}
-Weller, A.~A. and K.~L. Schuchmann, 2004.
+\bibitem[Weller and Schuchmann, 2004]{weller2004}
+Weller, A.~A. and Schuchmann, K.~L. (2004).
 \newblock Biogeographic and taxonomic revision of the trainbearers {L}esbia
   ({T}rochilidae), with the description of two new subspecies.
-\newblock Ornithologischer Anzeiger 43:115--136.
+\newblock {\em Ornithologischer Anzeiger}, 43(2):115--136.
+
+\bibitem[Wolowski et~al., 2013]{wolowski2013}
+Wolowski, M., Saad, C.~F., Ashman, T.-L., and Freitas, L. (2013).
+\newblock Predominance of self-compatibility in hummingbird-pollinated plants
+  in the {N}eotropics.
+\newblock {\em Naturwissenschaften}, 100(1):69--79.
 
 \end{thebibliography}
