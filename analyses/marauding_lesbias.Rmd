@@ -1,6 +1,6 @@
 ---
-title: "Marauding Lesbia Plots"
-author: "Boris Igić and Phil Fenberg"
+title: "Analyses for Nectar Robbing Trainbearer (Lesbia: Trochilidae)"
+author: "Boris Igić"
 date: '`r Sys.Date()`'
 output:
   html_document: default
@@ -65,7 +65,7 @@ Let's set up the catergories to be plotted. Two plots: one will include unknown 
 
 ```{r plotting-setup-1}
 
-# TOTAL RAW DATA
+# TOTAL RAW DATA WITH NA visits (Unknown mode)
 lesbia.tally <- data.frame(modes=as.factor(c("R2","R1/R2","T","T/P","P","UNK")),
            obs=c(sum(lesbias$visitor.mode=="NR2",na.rm = T),
           sum(lesbias$visitor.mode=="NR",na.rm = T),
@@ -85,11 +85,9 @@ lesbia.tally$perc <- (lesbia.tally$obs/sum(lesbia.tally$obs))*100
 les.tally.perc<-lesbia.tally$perc
 names(les.tally.perc)<-lesbia.tally$modes
 round(les.tally.perc,2)
-```
 
-```{r plotting-setup-2}
-
-# TOTAL RAW DATA
+# TOTAL RAW DATA OMITTING NA visits (Unknown mode)
+# This is intentionally clunky--helps separate what's going on
 lesbia.noNA <- data.frame(modes=as.factor(c("R2","R1/R2","T","T/P","P")),
            obs=c(sum(lesbias$visitor.mode=="NR2",na.rm = T),
           sum(lesbias$visitor.mode=="NR",na.rm = T),
@@ -117,7 +115,7 @@ round(les.noNA.perc,2)
 
 Now, let's check whether there are sex- or species-dependent associations. We don't expect any, a priori. To facilitate this, we're splitting the visits into two broad catergories: larceny (NR1,NR2,T, and any combinations thereof) and pollination (P,P/T). 
 
-Why is P/T listed as a pollination? because we cannot rule it out as a pollination and that classification is conservative with respect to our main argument---there is a *lot* of larceny going on, about 50% of all visits.
+Why is P/T listed as a pollination? because we cannot rule it out as a pollination and that classification is conservative with respect to our main argument---there is a *lot* of larceny going on, about a half of all visits.
 
 ```{r lesbia-splits-v1}
 #
@@ -467,13 +465,7 @@ points(jitter(lesbias$lon[complete.cases(lesbias$lon)],amount = 0.5), jitter(les
 #points(jitter(nun$lon[complete.cases(nun$lon)],amount = 0.5), jitter(nun$lat[complete.cases(nun$lat)], amount = 0.5), col='red', pch=20, cex=1.25)
 ```
 
-
-
-
-
-
-
-
+### Appendix: Color test used for figure design
 
 This is a color test that can be ignored, but is useful for selecting good plotting colors above.
 

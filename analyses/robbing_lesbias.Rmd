@@ -1,0 +1,251 @@
+---
+title: "Analyses for Nectar Larceny in the Trainbearers (Lesbia: Trochilidae)"
+author: "Boris Igić"
+date: "3/2/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+> This document can be used to retrieve the basic analyses presented in the manuscript submission entitled "Nectar larceny in the trainbearers (Lesbia, Trochilidae)", by Boris Igic, Ivory Nguyen, and Phillip Fenberg.
+
+```{r data-lib-import}
+library(ggplot2)
+library(RColorBrewer) # for brewer.pal() color palette
+library(cowplot) # for plot_grid()
+
+bandits<-read.csv(file = "/Users/boris/Dropbox/PROJECTS/nectar-robbing/larceny-paper/entered_data/robber_dbase_v1.1b-lesbia.csv", header=T, as.is=T)
+
+# Splits away Lesbias
+split.bandits <- split(bandits,bandits$bird.genus)
+lesbias <- split.bandits$Lesbia
+```
+
+### Summary Statistics
+
+Let's set up the catergories to be plotted. Two plots: one will include unknown modes and one will exclude them.
+
+```{r plotting-setup-1}
+
+# TOTAL RAW DATA WITH NA visits (Unknown mode)
+lesbia.tally <- data.frame(modes=as.factor(c("R2","R1/R2","T","T/P","P","UNK")),
+           obs=c(sum(lesbias$visitor.mode=="NR2",na.rm = T),
+          sum(lesbias$visitor.mode=="NR",na.rm = T),
+          sum(lesbias$visitor.mode=="T",na.rm = T),
+          sum(lesbias$visitor.mode=="P/T",na.rm = T),
+          sum(lesbias$visitor.mode=="P",na.rm = T),
+          sum(is.na(lesbias$visitor.mode)))
+          )
+# This is the total tally for all Lesbias:
+lesbia.tally
+
+# Set factors into desired plotting order
+lesbia.tally$modes <- factor(lesbia.tally$modes, levels = c("R2","R1/R2","T","T/P","P","UNK"))
+
+# convert observations into percentages
+lesbia.tally$perc <- (lesbia.tally$obs/sum(lesbia.tally$obs))*100
+les.tally.perc<-lesbia.tally$perc
+names(les.tally.perc)<-lesbia.tally$modes
+round(les.tally.perc,2)
+
+# TOTAL RAW DATA OMITTING NA visits (Unknown mode)
+# This is intentionally clunky--helps separate what's going on
+lesbia.noNA <- data.frame(modes=as.factor(c("R2","R1/R2","T","T/P","P")),
+           obs=c(sum(lesbias$visitor.mode=="NR2",na.rm = T),
+          sum(lesbias$visitor.mode=="NR",na.rm = T),
+          sum(lesbias$visitor.mode=="T",na.rm = T),
+          sum(lesbias$visitor.mode=="P/T",na.rm = T),
+          sum(lesbias$visitor.mode=="P",na.rm = T)
+          ))
+# This is the total tally for all Lesbias:
+lesbia.noNA
+
+# Set factors into desired plotting order
+lesbia.noNA$modes <- factor(lesbia.noNA$modes, levels = c("R2","R1/R2","T","T/P","P"))
+
+# convert observations into percentages
+lesbia.noNA$perc <- (lesbia.noNA$obs/sum(lesbia.noNA$obs))*100
+les.noNA.perc<-lesbia.noNA$perc
+names(les.noNA.perc)<-lesbia.noNA$modes
+round(les.noNA.perc,2)
+
+les.sp.not.na<-complete.cases(lesbias[,c(which(names(lesbias)=="bird.species"),which(names(lesbias)=="visitor.mode"))])
+sp_mode <- lesbias[,c(1:16)][les.sp.not.na,]
+nun <- split(sp_mode,sp_mode$bird.species)$nuna
+vic <- split(sp_mode,sp_mode$bird.species)$victoriae
+table(nun$visitor.mode)
+table(vic$visitor.mode)
+```
+
+### Sex and Species
+
+Now, let's check whether there are sex- or species-dependent associations. We don't expect any, a priori. To facilitate this, we're splitting the visits into two broad catergories: larceny (NR1,NR2,T, and any combinations thereof) and pollination (P,P/T). 
+
+Why is P/T listed as a pollination? because we cannot rule it out as a pollination and that classification is conservative with respect to our main argument---there is a *lot* of larceny going on, about a half of all visits.
+
+```{r lesbia-splits-v2,  eval=T}
+lesbias$mode.bin<-lesbias$visitor.mode
+lesbias$mode.bin[lesbias$visitor.mode=="NR"]<-"robbing"
+lesbias$mode.bin[lesbias$visitor.mode=="NR2"]<-"robbing"
+lesbias$mode.bin[lesbias$visitor.mode=="T"]<-"other"
+lesbias$mode.bin[lesbias$visitor.mode=="T/P"]<-"other"
+lesbias$mode.bin[lesbias$visitor.mode=="P/T"]<-"other"
+lesbias$mode.bin[lesbias$visitor.mode=="P"]<-"other"
+
+# Get rid of no species ID rows
+split.lesbias <- split(lesbias,lesbias$bird.species)
+victoriae <- split.lesbias$victoriae
+nuna <- split.lesbias$nuna
+
+lesbias.new <- rbind(nuna,victoriae)
+lesbias.xtab <- xtabs( ~ bird.species + mode.bin + bird.sex, data = lesbias.new)
+
+library(vcd)
+library(vcdExtra)
+library(MASS)
+
+# simple summaries
+# pdf(width=8,height=6,file="mosaic-plot.pdf")
+mosaic(lesbias.xtab, shade=T)
+# dev.off()
+lesbias.table<-mosaic(lesbias.xtab, shade=T)
+
+lesbias.table
+
+assoc(lesbias.xtab, shade=TRUE)
+
+# Statistical test of independence (variant repeated below for completeness)
+summary(lesbias.xtab) # outputs chi-square test
+```
+
+## Model Testing
+
+
+```{r lesbia-lm-stats, eval=T}
+
+# Independent model
+mod_ind<-loglm(~ mode.bin + bird.species + bird.sex, lesbias.xtab) 
+
+# Partial Independence: mode is partially independent of composite variable sex*species
+mod_part_ind1<-loglm(~ mode.bin + bird.species + bird.sex + bird.species * bird.sex, lesbias.xtab)
+
+# Conditional Independence: mode is independent of species, given sex
+mod_cond_1A<-loglm(~ mode.bin + bird.species + bird.sex + mode.bin * bird.sex + bird.species * bird.sex, lesbias.xtab)
+
+# Conditional Independence: mode is independent of sex, given species
+mod_cond_1B<-loglm(~ mode.bin + bird.species + bird.sex + mode.bin * bird.species + bird.sex * bird.species, lesbias.xtab)
+
+# No Three-Way Interaction
+mod_no3way_1<-loglm(~ mode.bin + bird.species + bird.sex + mode.bin * bird.species + bird.species * bird.sex + mode.bin * bird.sex, lesbias.xtab)
+
+#anova(mod_ind,mod_part_ind1,mod_cond_1A,mod_cond_1B,mod_no3way_1)
+#LRstats(mod_ind,mod_part_ind1,mod_cond_1A,mod_cond_1B,mod_no3way_1)
+#anova(mod_ind,mod_part_ind1,mod_cond_1A,mod_no3way_1)
+LRstats(mod_ind,mod_part_ind1,mod_cond_1A,mod_no3way_1)
+```
+
+### Set-up for plotting 
+
+This sets up plots by species, but it is specifically omitting NA/UNK entries, because it is using the values of nun and vic as calculated for the Fisher Tests (which omit them).
+
+```{r by-species-plotting-setup}
+#
+#L. nuna
+#
+nun.tally <- data.frame(modes=as.factor(c("R2","R1/R2","T","T/P","P","UNK")),
+           obs=c(sum(nun$visitor.mode=="NR2",na.rm = T),
+          sum(nun$visitor.mode=="NR",na.rm = T),
+          sum(nun$visitor.mode=="T",na.rm = T),
+          sum(nun$visitor.mode=="P/T",na.rm = T),
+          sum(nun$visitor.mode=="P",na.rm = T),
+          sum(is.na(nun$visitor.mode)))
+          )
+# This is the total tally for all Lesbias:
+nun.tally
+
+
+# Set factors into desired plotting order
+nun.tally$modes <- factor(nun.tally$modes, levels = c("R2","R1/R2","T","T/P","P","UNK"))
+
+# convert observations into percentages
+nun.tally$perc <- (nun.tally$obs/sum(nun.tally$obs))*100
+
+#
+# L. victoriae
+#
+
+vic.tally <- data.frame(modes=as.factor(c("R2","R1/R2","T","T/P","P","UNK")),
+           obs=c(sum(vic$visitor.mode=="NR2",na.rm = T),
+          sum(vic$visitor.mode=="NR",na.rm = T),
+          sum(vic$visitor.mode=="T",na.rm = T),
+          sum(vic$visitor.mode=="P/T",na.rm = T),
+          sum(vic$visitor.mode=="P",na.rm = T),
+          sum(is.na(vic$visitor.mode)))
+          )
+# This is the total tally for all Lesbias:
+vic.tally
+
+
+# Set factors into desired plotting order
+vic.tally$modes <- factor(vic.tally$modes, levels = c("R2","R1/R2","T","T/P","P","UNK"))
+
+# convert observations into percentages
+vic.tally$perc <- (vic.tally$obs/sum(vic.tally$obs))*100
+
+```
+
+### Plotting the joint species frequency of larceny
+
+Two color schemes, red:blue:white and red:yellow:green, display all observations, including unknown visit modes (latter) and not including NA/UNK observations (former).
+
+```{r lesbia-data-plot, fig.height = 10, fig.width = 5}
+
+# Colors for plotting
+# this is a good red, #f03b20, ("#FEEACCFF") but the result with white is very porky flesh. Looks like bacon
+# '#e6550d' with '#FEEDDDFF' looks pretty good, because it's orangey
+# red to blue? #f03b20 to #a6bddb
+# scale_fill_manual(values=brewer.pal(n=6, name='RdYlGn')) <-- this is great, but
+# it needs a sixth white/off-white color added for "Interaction cannot be determined"
+
+##f03b20, ("#FEEACCFF"
+lesbia.col <- colorRampPalette(c('#f03b20','cornflowerblue')) # reddish to blueish
+lesbia.cols <- alpha(lesbia.col(5))
+RBW6 <- c(lesbia.cols,'#EAEFEDFF')
+
+# First plotting attempt with red:blue:white and observation percentages WITHOUT UNKNOWN mode observations
+l1 <- ggplot(lesbia.noNA, aes(1, perc, fill=modes)) + 
+  geom_bar(data=lesbia.noNA,stat="identity") +
+  scale_fill_manual(values=RBW6) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), 
+        axis.title.y=element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.background = element_blank())
+
+# Second plotting attempt with red:green:white, WITH UNKNOWN mode observations
+#scale_fill_manual(values=brewer.pal(n=6, name='RdYlGn'))
+
+RGW6 <- brewer.pal(n=6, name='RdYlGn')
+RGW6[6] <- '#FAEFEFAF'
+l2 <- ggplot(lesbia.tally, aes(1, perc, fill=modes)) + 
+  geom_bar(data=lesbia.tally,stat="identity") +
+  scale_fill_manual(values=RGW6) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(), 
+        axis.title.y=element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        panel.background = element_blank()) 
+  # + scale_y_reverse()
+
+plot_grid(l1, l2, ncol=2, align="v")
+
+# plot to file with pdf()
+# pdf(file="lesbia-fig1.pdf", height=10, width=5)
+# plot_grid(l1, l2, ncol=2, align="v")
+# dev.off()
