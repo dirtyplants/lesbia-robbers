@@ -1,0 +1,112 @@
+GENERAL
+
+- add Snow1980 pp116 and Tables 1:3, Lesbia nuna visit inefficiency note!
+
+"...either by inserting the bill on the underside, at the point where the corolla tube divides , or by piercing a hole (or using an existing hole) on the upper side of the calyx near the base."
+
+Table III: 20 legitimate, 35 illegitimate, 16 insect hawking. (Nectar foraging: leg.36.4%/illeg.63.6%) (Total: 28.2%/49.3%/22.5%)
+
+Tabulate other studies in Table III and report in paper (add lines to review).
+
+- add abstract statement that this is from bird diet perspective, not plant nectar removal perspective
+- make it clear that it is the first to report this breakdown frequency first in Lesbia and maybe all hummers
+- (mine) clarify that ornelas1994 may be more right that appreciated if only primary robbing is associated with tomial serrations. Suggest further separation of the two and tests, including the idea that tomial serrations could be pleiotropic (on fitness): shaped by both sexual (male-male competition) and viability selection. 
+
+REVIEWER 1
+
+	remove meta-analysis (l56 and elsewhere)
+DONE [l56 and l100 removed and rephrased]
+
+	revise l80-88 without doing anything ("YES")
+DONE [added section title to clarify that this is an OBSERVATION description: "Description of original observation"]
+
+	add the comparison with bees and flowerpiercers (NO)
+	add citations (YES?)
+	add exemplar photos with illustration of each scored category (YES)
+	comment that Boris did quality control on all observations
+	clarify that we took the iNat photo and that we have permission to publish from Diego Emerson Torres (include invoice)
+
+
+Reviewer 1 (Anonymous)
+
+Basic reporting
+
+The authors report the occurrence of nectar larceny in both currently recognized species of trainbearers (Lesbia nuna and L. victoriae). They observed and photographed a male Green-tailed Trainbearer (L. nuna), which nectar-robbed several flowers of Fuchsia boliviensis (Onagraceae) in Ollantaytambo (Peru) and then followed the same individual on a 50 m foraging bout, while it nectar-robbed flowers of Brugmansia sanguinea (Solanaceae; with 30cm-long tubular flowers, and then legitimately visiting Salvia leucantha (Lamiaceae). The observations occurred in an area in which flowerpiercers (Diglossa sittoides and D. brunneiventris) occur at relatively high densities. Based on these observations, the authors then did a literature search and examined photo records on public online photo services. After they carefully examined the photo records, they scored the observed "behavior" in each photo by species and individual sex (if possible) and the plant-hummingbird interaction in the photo assigned to the following categories: primary nectar robbing, secondary nectar-robbing, nectar thieving, and pollination. Based on their results, the authors estimated conservatively that ca. 40% of the recorded nectar foraging "visits" involves nectar robbing, and males seem to engage more frequently in nectar robbing than females (marginal differences). The authors then discussed the significance of their findings, linked to original observation of nectar robbing and limited available data to be compared with. There are few important issues that must be considered before this manuscript is recommended for publication in PeerJ. I offer broad areas of criticism and suggestions for improvement in the various sections of my report.
+
+The English language is clear and professional throughout. However, there are some instances in which the terms used are misleading. An example where the language could be improved includes line 56---the use of "meta-analysis" is misleading because it does not use meta-analysis in the statistical sense. Also, "…a larger meta-analysis…"; it is not clear what do you mean by "larger", as compared to what "smaller" meta-analysis? The phrasing and use of meta-analysis makes comprehension difficult and it might be misleading. Please revise the whole manuscript for clarity. Also, there are some instances that I get the feeling that the manuscript is more a narration of a species account than a scientific paper (e.g., lines 80–88). Please revise the whole manuscript and ask whether or not this gut feeling applies to your manuscript.
+
+Your Introduction and background is adequate, I do not think needs more detail. Although the literature on nectar robbing by insects is ample, there is only few studies on nectar robbing by birds and specifically for hummingbird species. However, it would be useful if you at least compare the % of nectar robbing from your observations to those observed and reported for insect species and flowerpiercers. I then do suggest that you revise the literature on flowerpiercers and bumblebees in which the described behaviors by Inouye (1980) regarding the various "types" of floral larceny occur and see whether the high percentage that you are reporting is also found in other systems in which other than hummingbirds are the pollinators. For instance, Arizmendi (2001) found that the frequency of nectar robbery by flowerpiercers at the individual-plant level varied from 5 to 58% (you cite this study and one of the main findings, line 217), a lower range from other studies of hummingbird-plant species at the community level in which the percentage of flowers robbed represented about 70% of the total number of flowers per plant (Navarro 2000, 2001). That sort of comparisons would provide more justification for your study and would let you to compare your findings reaching a broader audience. I do suggest you review and cite the paper by Rojas-Nossa et al. (2016) Oikos 125, 1044–1055.
+
+[add numbers from navarro1999, Biotropica, also plant perspective]
+
+Arizmendi (2001) Can J Zool 79, 997–1006.
+Navarro (2000) AJB 87, 980–985.
+Navarro (2001) Pl Ecol 152, 59–65. 
+
+Figures are relevant, high quality, well labelled & described. Yes. 
+
+Raw data supplied (see PeerJ policy). 26]. All data generated in this study is deposited in iNaturalist (https://www.inaturalist.org/observations/37206000) and checked that it was publicly available.
+
+
+Experimental design
+
+I commend the authors for presenting the manuscript to be published. We have much to learn on nectar robbing, particularly among hummingbirds. If there is a weakness, it is the very few observations of nectar robbing in the field (in fact, one individual performing this behavior in different flowers and plant species) and the use of photos for the rest of the study. You indicate the limitations of such an approach.
+
+I believe it would be useful for the reader to have an additional figure with photos showing each of the categories used for quantification of floral larceny.
+
+Although some of the photos were deposited in iNaturalist (https://www.inaturalist.org/observations/37206000) and are publicly available, I believe the reader needs to check the assigned category to each of the photos deposited. I do see you have added a supplementary appendix in which for each of the photos used as numbered in iNaturalist you provide by columns the species identity (plant and hummingbird species), individual sex, and the nectar robbing category you assigned, as to have an idea on the certainty and difficulties in your decision making, but it is not indicated whether the same person did that part of the job. In the corresponding section, you have indicated that all three authors performed the experiments, but what you need to explain is in Methods who did it.
+
+
+Validity of the findings
+
+There is not way how the study can be replicated, unless you provide in the supplementary appendix how many observers of photos participated. Please also explain whether you have the permission from authors of all photos to be deposited in iNaturalist and used by the public.
+
+Comments for the Author
+
+I agree with you that we badly need more field studies as to document the various foraging modes described for floral larceny, particularly in plant-hummingbird communities.
+
+
+REVIEWER 2
+
+	- point out that we use limitation many times and add word unquantifiable bias
+
+	- respond to "I would suggest highlighting any quantification of nectar robbing/larceny in other hummingbird genera if it exists."
+
+	- A clarification can be made in the abstract if “both” in line 15 is changed to “the two” to clarify that there are two species. 	
+
+	- whether whether
+[DONE	L187 removed extra "whether"]
+
+	- Table 1: Legend says “Larceny,” but the table says “Robbing”
+[DONE	T1 legend fixed error; now "Robbing" instead.]
+
+
+Reviewer 2 (Rainee Kaczorowski)
+
+Basic reporting
+
+This manuscript is basically an analysis of posted photographs of trainbearer hummingbirds (Lesbia sp.) to gauge the prevalence of nectar robbing in the group, with some additional investigation into patterns. The bulk of the study is rather preliminary, but it does provide some useful information that could inform future studies.
+
+The manuscript is well-written, and there are minimal issues with the Table/Figures provided (see below).
+
+Although previous studies have documented nectar robbing in other hummingbird genera, this study is the first to document the occurrence of nectar robbing in trainbearer hummingbirds, which could be useful information for those that consider the foraging habits of these species. This study also provides limited data that suggests a lack of tomial serration in these species, which may be relevant in the consideration of primary versus secondary robbing habits.
+
+Experimental design
+
+It is clear that more information is needed on the floral visitation patterns of trainbearers. This study attempts to fill this gap using the many "citizen science" photographs that can be found online, with minimal data collected by the authors themselves. This type of data has limitations, and the authors recognize those limitations, while providing a preliminary model analysis with the data they were able to extract from the photographs.
+Validity of the findings
+This study attempts to recognize patterns of visitation for the different sexes and species. I feel this interpretation can be problematic with this form of data. However, it seems the authors sufficiently caution readers to the limitations of the study and seem to present results as more of a preliminary analysis to inform further studies.
+
+Although the authors do well to highlight the limitations in the analysis investigating visitation patterns based on sexes and species, caveats should also be attributed to the conclusion that floral larceny is "common" since this depends upon which photographs were uploaded to the sites, which could be biased in some way as well.
+
+Comments for the Author
+
+If possible, I would suggest highlighting any quantification of nectar robbing/larceny in other hummingbird genera if it exists. Otherwise, the statements made at the beginning of the discussion should suffice to clarify that nectar robbing has been documented in other hummingbird species.
+
+A clarification can be made in the abstract if "both" in line 15 is changed to "the two" to clarify that there are two species. 
+
+Perhaps "minimally" could be changed to "at least" or something else in Line 104, since "minimally" may suggest to some that the bulk of the diet is made up by something other than arthropods and nectar. 
+
+Line 187: two "whether" at the end of the line.
+
+Table 1: Legend says "Larceny," but the table says "Robbing," which I think is more appropriate if you are focused on the two different modes of robbing without considering potential larceny.
