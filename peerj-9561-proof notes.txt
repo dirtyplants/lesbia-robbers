@@ -1,0 +1,47 @@
+CHANGES or CORRECTIONS
+
+p.3: Just above Q4 in the section "Description of original observation": the last digit of the coordinates should be seconds unit mark, resembling double quotes ("), instead of the minutes unit mark (currently there).
+
+I am not sure if this will display correctly, but it should read: 13°15'44"S, 72°16'14"W
+
+p.6: Figure 1 caption ... frequency of LESBIA species." Lesbia is a generic epithet and should be italicized.
+
+p.7: Table 1 caption ... for LESBIA spp." Lesbia is a generic epithet and should be italicized.
+
+
+AUTHOR QUERIES 
+
+Q1 (p.1)
+Please check all author names, initials, and affiliations to confirm they are accurate.
+
+
+Q2 (p.2)
+This reference is cited in the body of the text but does not have a corresponding reference in the reference list. Please supply the complete reference for Lesson (1832).
+
+Please remove (Lesson, 1832). This is not a formal in-line reference, but a full taxon name, with its first description. It is unnecessary for the purposes of the paper.
+
+Q3 (p.3)
+This reference is cited in the body of the text but does not have a corresponding reference in the reference list. Please supply the complete reference for Bourcier & Mulsant (1846).
+
+Please remove (Bourcier & Mulsant 1846). This is not a formal in-line reference, but a full taxon name, with its first description. It is unnecessary for the purposes of the paper.
+
+
+Q4 (p.3)
+Per house style, personal observation should also be cited in the text with the author name, author initial and year date. Please provide the year date for this personal observation.
+
+January 14, 2019.
+
+Q5 (p.8)
+Per house style, personal observation should also be cited in the text with the author name, author initial and year date. Please provide the year date for this personal observation.
+
+January 14, 2019.
+
+Q6 (p.12)
+Reference iNaturalist (2019) is incomplete. Please provide any of the relevant missing information: article title, website.
+
+https://www.inaturalist.org
+
+Q7 (p.13)
+Reference Stiles (2004) is incomplete. Please provide any of the relevant missing information: website. 
+
+http://www.museum.lsu.edu/~Remsen/SACCprop143.htm
